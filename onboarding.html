@@ -1,25 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <meta name="viewport" content="width=, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
-    crossorigin="anonymous"></script>
-  <title>On Boarding Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+  <title>Onboarding Form</title>
   <style>
-    input {
-      width: 500px;
-      border-radius: 3px;
-    }
-
     body {
-
       background: #f7f9fb;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
@@ -29,26 +17,24 @@
     .header-banner {
       background-color: #2c3e50;
       color: white;
-      padding: 25px 0;
+      padding: 20px 0;
       text-align: center;
-      font-size: 32px;
+      font-size: clamp(24px, 5vw, 32px);
       font-weight: bold;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
 
     .container {
-      padding: 30px;
+      padding: 20px;
       background-color: white;
       border-radius: 10px;
-      width: 80%;
-      max-width: 1000px;
-      margin: 40px auto;
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px auto;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
     }
 
-    h3,
-    h5 {
+    h3, h5 {
       color: #34495e;
     }
 
@@ -56,153 +42,197 @@
       color: #2c3e50;
     }
 
-    .mt-2 {
-      margin-top: 15px;
+    .form-label {
+      margin-bottom: 5px;
+      font-weight: 500;
     }
 
-    .mt-3 {
-      margin-top: 20px;
-    }
-
-    .mt-4 {
-      margin-top: 30px;
-    }
-
-    input[type="text"] {
-      padding: 6px 8px;
-      width: 400px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    input[type="text"]:focus {
-      outline: none;
-      border-color: #3498db;
-      box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
-    }
-
-    input[type="email"] {
-      padding: 6px 8px;
-      width: 400px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    input[type="email"]:focus {
-      outline: none;
-      border-color: #3498db;
-      box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
-    }
-
-    input[type="date"] {
-      padding: 6px 8px;
-      width: 400px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    input[type="date"]:focus {
-      outline: none;
-      border-color: #3498db;
-      box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
-    }
-
-    input[type="file"] {
-      padding: 6px 8px;
-      width: 400px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    input[type="file"]:focus {
-      outline: none;
-      border-color: #3498db;
-      box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
-    }
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="file"],
+    input[type="number"],
     select {
-      padding: 6px 8px;
-      width: 400px;
+      width: 100%;
+      padding: 8px;
       border: 1px solid #ccc;
       border-radius: 5px;
+      box-sizing: border-box;
     }
 
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="date"]:focus,
+    input[type="file"]:focus,
+    input[type="number"]:focus,
     select:focus {
       outline: none;
       border-color: #3498db;
       box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
     }
 
-    input[type="number"] {
-      padding: 6px 8px;
-      width: 400px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    input[type="number"]:focus {
-      outline: none;
-      border-color: #3498db;
-      box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
-    }
-
     input[type="checkbox"] {
-      width: 10px;
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
+      border: 2px solid #2c3e50;
+      border-radius: 4px;
+      cursor: pointer;
+      vertical-align: middle;
+    }
 
+    input[type="checkbox"]:checked {
+      background-color: #2c3e50;
+      border-color: #2c3e50;
+    }
+
+    .form-check-label {
+      vertical-align: middle;
     }
 
     .remove-btn {
       background-color: #2c3e50;
       color: white;
-      margin-left: 510px;
-      margin-bottom: 10px;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 13px;
+    }
+
+    .add-btn {
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 13px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .education-entry, .experience-entry {
+      position: relative;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .error-message {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .section-divider {
+      border: 2px solid #34495e;
+      margin: 20px 0;
+    }
+
+    .btn-primary {
+      background-color: #2c3e50;
+      border-color: #2c3e50;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 95%;
+        padding: 15px;
+      }
+
+      .header-banner {
+        font-size: clamp(20px, 4vw, 24px);
+      }
+
+      .form-label {
+        font-size: 14px;
+      }
+
+      input, select {
+        font-size: 14px;
+      }
+
+      .btn, .add-btn, .remove-btn {
+        width: 100%;
+        margin: 10px 0;
+      }
+
+      .remove-btn {
+        position: static;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .container {
+        padding: 10px;
+      }
+
+      input, select {
+        padding: 6px;
+      }
+
+      .form-label {
+        font-size: 13px;
+      }
+
+      .section-divider {
+        width: 100%;
+      }
     }
   </style>
 </head>
-
 <body>
-  <h1 style="text-align: center;" class="header-banner m-4">Welocme To Employee Boarding Form</h1>
-  <div class="container" style="margin-left: 100px; margin-top: 30px;">
-    <h3>Personal Details : </h3>
-    <hr style="border: 2px solid #34495e; width : 600px ; margin-left: 0;">
-    <div style="margin-left: 30px;">
-      <div class="mt-2">Name(Full Name) :-<input type="text" style="margin-left: 50px;" id="name"
-          onkeypress="validateKey(event,'name')" minlength="5" maxlength="30" oninput="validateName('name','Name')"
-          required>
-        <div id="nameError" style="color: red; font-size: 12px;margin-left:200px;"></div>
+  <h1 class="header-banner">Welcome to Employee Onboarding Form</h1>
+  <div class="container">
+    <h3>Personal Details</h3>
+    <hr class="section-divider">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="name" class="form-label">Name (Full Name)</label>
+        <input type="text" class="form-control" id="name" onkeypress="validateKey(event,'name')" minlength="5" maxlength="30" oninput="validateName('name','Name')" required>
+        <div id="nameError" class="error-message"></div>
       </div>
-      <div class="mt-2">Email ID :-<input type="email" style="margin-left: 115px;" id="email" oninput="validateEmail()"
-          required>
-        <div id="emailError" style="color: red; font-size: 12px;margin-left:200px;"></div>
+      <div class="col-md-6 mb-3">
+        <label for="email" class="form-label">Email ID</label>
+        <input type="email" class="form-control" id="email" oninput="validateEmail()" required>
+        <div id="emailError" class="error-message"></div>
       </div>
-      <div class="mt-2">Phone No:-<input type="text" style="margin-left: 108px;" id="phone"
-          onkeypress="validateNumberkey(event,'phone')" minlength="10" maxlength="10" oninput="phoneNumber()" required>
-        <div id="phoneNumberError" style="color: red; font-size: 12px;margin-left:200px;"></div>
+      <div class="col-md-6 mb-3">
+        <label for="phone" class="form-label">Phone No</label>
+        <input type="text" class="form-control" id="phone" onkeypress="validateNumberkey(event,'phone')" minlength="10" maxlength="10" oninput="phoneNumber()" required>
+        <div id="phoneNumberError" class="error-message"></div>
       </div>
-      <div class="mt-2">Alternate Number :-<input type="text" style="margin-left: 48px;" id="phoneAl"
-          onkeypress="validateNumberkey(event,'phoneAl')" minlength="10" maxlength="10" oninput="phoneAlNumber()"
-          required>
-        <div id="alternateNumberError" style="color: red; font-size: 12px;margin-left:200px;"></div>
+      <div class="col-md-6 mb-3">
+        <label for="phoneAl" class="form-label">Alternate Number</label>
+        <input type="text" class="form-control" id="phoneAl" onkeypress="validateNumberkey(event,'phoneAl')" minlength="10" maxlength="10" oninput="phoneAlNumber()" required>
+        <div id="alternateNumberError" class="error-message"></div>
       </div>
-      <div class="mt-2">Marital Status :-<input type="text" style="margin-left: 77px;" id="marital"
-          onkeypress="validateKey(event,'marital')" minlength="5" maxlength="30"
-          oninput="validateName('marital','Martital Status')" required>
-        <div id="maritalError" style="color: red; font-size: 12px;margin-left:200px;"></div>
+      <div class="col-md-6 mb-3">
+        <label for="marital" class="form-label">Marital Status</label>
+        <input type="text" class="form-control" id="marital" onkeypress="validateKey(event,'marital')" minlength="5" maxlength="30" oninput="validateName('marital','Marital Status')" required>
+        <div id="maritalError" class="error-message"></div>
       </div>
-      <div class="mt-2">Date of Birth :-<input type="date" style="margin-left: 82px;" id="doB"
-          oninput="validateDob('doB','DOB')">
-        <div id="doBError" style="color: red; font-size: 12px;margin-left:200px;"></div>
+      <div class="col-md-6 mb-3">
+        <label for="doB" class="form-label">Date of Birth</label>
+        <input type="date" class="form-control" id="doB" oninput="validateDob('doB','DOB')">
+        <div id="doBError" class="error-message"></div>
       </div>
-      <div class="mt-2">
-        <label for="gender" style="margin-left:0px;">Gender:-</label>
-        <select id="gender" name="degree" style="margin-left: 120px; width: 400px;">
+      <div class="col-md-6 mb-3">
+        <label for="gender" class="form-label">Gender</label>
+        <select id="gender" name="gender" class="form-control">
           <option value="">--Select--</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
         </select>
       </div>
-      <div class="mt-2">
-        <label for="bloodGroup" style="margin-left:0px;">Select Blood Group</label>
-        <select id="bloodGroup" name="degree" style="margin-left: 45px; width: 400px;">
+      <div class="col-md-6 mb-3">
+        <label for="bloodGroup" class="form-label">Blood Group</label>
+        <select id="bloodGroup" name="bloodGroup" class="form-control">
           <option value="">--Select--</option>
           <option value="A+">A+</option>
           <option value="A-">A-</option>
@@ -211,751 +241,726 @@
           <option value="O+">O+</option>
           <option value="O-">O-</option>
           <option value="AB+">AB+</option>
-          <option value="AB-">AB-</option>
+          <option value="AB-"></option>
         </select>
       </div>
-      <!-- <div class="mt-2">Passport Number & Name as per ID :-<input type="text" style="margin-left: 65px;" required></div>
-            <div class="mt-2">Voters ID & Name as per ID :-<input type="text" style="margin-left: 123px;" required></div> -->
-      <div class="mt-2">Aadhar ID :-<input type="text" style="margin-left: 100px;" id="aadhar" maxlength="14"
-          oninput="formatAadhar()" required>
-        <div id="aadharError" style="color: red; font-size: 12px;margin-left:200px;"></div>
+      <div class="col-md-6 mb-3">
+        <label for="aadhar" class="form-label">Aadhar ID</label>
+        <input type="text" class="form-control" id="aadhar" maxlength="14" oninput="formatAadhar()" required>
+        <div id="aadharError" class="error-message"></div>
       </div>
-      <div class="mt-2">Upload Aadhar:-<input type="file" style="margin-left: 68px;" required></div>
-      <div class="mt-2">PAN ID :-<input type="text" style="margin-left:120px;" id="pan" oninput="validatePAN()"
-          maxlength="10" required>
-        <div id="panError" style="color: red; font-size: 12px;margin-left:200px;"></div>
+      <div class="col-md-6 mb-3">
+        <label for="aadharFile" class="form-label">Upload Aadhar</label>
+        <input type="file" class="form-control" id="aadharFile" required>
       </div>
-      <div class="mt-2">Upload Pan:-<input type="file" style="margin-left: 94px;" required></div>
-      <!-- <div class="mt-2">UAN No :-<input type="text" style="margin-left: 257px;" required></div>
-            <div class="mt-2">PAN ID & Name as per ID :-<input type="text" style="margin-left: 135px;" required></div> -->
-      <div class="mt-2"> Guardian Name:-<input type="text" style="margin-left: 62px;" minlength="5" maxlength="30"
-          id="gName" onkeypress="validateKey(event,'gName')" oninput="validateName('gName','GuardianName')" required>
-        <div id="gNameError" style="color: red; font-size: 12px;margin-left:200px;"></div>
+      <div class="col-md-6 mb-3">
+        <label for="pan" class="form-label">PAN ID</label>
+        <input type="text" class="form-control" id="pan" oninput="validatePAN()" maxlength="10" required>
+        <div id="panError" class="error-message"></div>
       </div>
-      <div class="mt-2"> Guardian Number :-<input type="text" style="margin-left: 42px;" minlength="10"
-          maxlength="10" id="gPnum" onkeypress="validateNumberkey(event,'gPnum')"
-          oninput="validateNumberkey('gPnum','GuardianPhoneNumbet')" required>
-        <div id="gNameError" style="color: red; font-size: 12px;margin-left:200px;"></div>
+      <div class="col-md-6 mb-3">
+        <label for="panFile" class="form-label">Upload PAN</label>
+        <input type="file" class="form-control" id="panFile" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="gName" class="form-label">Guardian Name</label>
+        <input type="text" class="form-control" id="gName" minlength="5" maxlength="30" onkeypress="validateKey(event,'gName')" oninput="validateName('gName','Guardian Name')" required>
+        <div id="gNameError" class="error-message"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="gPnum" class="form-label">Guardian Number</label>
+        <input type="text" class="form-control" id="gPnum" minlength="10" maxlength="10" onkeypress="validateNumberkey(event,'gPnum')" oninput="validateNumber('gPnum','Guardian Phone Number')" required>
+        <div id="gPnumError" class="error-message"></div>
       </div>
     </div>
 
-
-    <h3 class="mt-4">Educations details</h3>
-    <hr style="border: 2px solid #34495e; width : 600px ; margin-left: 0;">
-    <!-- <h5 class="mt-2" style="margin-left: 30px;">Post-Graduation</h5> -->
-    <div id="education-container" style="margin-left: 50px; ">
-      <div class="education-entry m-2">
-        <label for="degrees" style="margin-left:0px;">Select Degree</label>
-        <select id="degree-0" name="degree-0" style="margin-left: 42px; width: 400px;">
-          <option value="">--Select--</option>
-          <option value="postgraduation">Post-Graduation</option>
-          <option value="graduation">Graduation</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="ssc">SSC</option>
-        </select>
-        <div class="mt-2">College Name :-<input type="text" style="margin-left: 30px;" name="collegeName-0"
-            id="collegeName-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'collegeName-0')"
-            oninput="validateName('collegeName-0','College Name')" required>
-          <div id="collegeName-0Error" style="color: red; font-size: 12px;margin-left:160px;"></div>
+    <h3 class="mt-4">Education Details</h3>
+    <hr class="section-divider">
+    <div id="education-container">
+      <div class="education-entry row mb-3">
+        <div class="col-md-6 mb-3">
+          <label for="degree-0" class="form-label">Select Degree</label>
+          <select id="degree-0" name="degree-0" class="form-control">
+            <option value="">--Select--</option>
+            <option value="postgraduation">Post-Graduation</option>
+            <option value="graduation">Graduation</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="ssc">SSC</option>
+          </select>
         </div>
-        <div class="mt-2">Stream :-<input type="text" style="margin-left: 80px;" name="stream-0" id="stream-0"
-            minlength="5" maxlength="30" onkeypress="validateKey(event,'stream-0')"
-            oninput="validateName('stream-0','Stream')" required>
-          <div id="stream-0Error" style="color: red; font-size: 12px;margin-left:160px;"></div>
+        <div class="col-md-6 mb-3">
+          <label for="collegeName-0" class="form-label">College Name</label>
+          <input type="text" class="form-control" name="collegeName-0" id="collegeName-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'collegeName-0')" oninput="validateName('collegeName-0','College Name')" required>
+          <div id="collegeName-0Error" class="error-message"></div>
         </div>
-        <div class="mt-2">Year of passing :-<input type="text" style="margin-left: 25px;" name="yearOfPassing-0"
-            id="yearOfPassing-0" maxlength="4" minlength="4" onkeypress="validateNumberkey(event,'yearOfPassing-0')"
-            oninput="validateYearOfPassing()" required>
-          <div id="yearOfPassing-0Error" style="color: red; font-size: 12px;margin-left:160px;"></div>
+        <div class="col-md-6 mb-3">
+          <label for="stream-0" class="form-label">Stream</label>
+          <input type="text" class="form-control" name="stream-0" id="stream-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'stream-0')" oninput="validateName('stream-0','Stream')" required>
+          <div id="stream-0Error" class="error-message"></div>
         </div>
-        <div class="mt-2">Location :-<input type="text" style="margin-left: 68px;" name="location-0" id="location-0"
-            onkeypress="validateKey(event,'location-0')" oninput="validateName('location-0','Location')" required>
-          <div id="location-0Error" style="color: red; font-size: 12px;margin-left:160px;"></div>
+        <div class="col-md-6 mb-3">
+          <label for="yearOfPassing-0" class="form-label">Year of Passing</label>
+          <input type="text" class="form-control" name="yearOfPassing-0" id="yearOfPassing-0" maxlength="4" minlength="4" onkeypress="validateNumberkey(event,'yearOfPassing-0')" oninput="validateYearOfPassing('yearOfPassing-0')" required>
+          <div id="yearOfPassing-0Error" class="error-message"></div>
         </div>
-        <div class="mt-2">Aggregate/% :-<input type="text" style="margin-left: 35px;" name="aggregation-0"
-            id="aggregation-0" maxlength="3" minlength="1" onkeypress="validateNumberkey(event,'aggregation-0')"
-            oninput="validateAggregation()" required>
-          <div id="aggregation-0Error" style="color: red; font-size: 12px;margin-left:160px;"></div>
+        <div class="col-md-6 mb-3">
+          <label for="location-0" class="form-label">Location</label>
+          <input type="text" class="form-control" name="location-0" id="location-0" onkeypress="validateKey(event,'location-0')" oninput="validateName('location-0','Location')" required>
+          <div id="location-0Error" class="error-message"></div>
         </div>
-        <div class="mt-2">Upload Certificates:-<input type="file" style="margin-left: 1px;" name="file-0" id="file-0"
-            required></div>
-
+        <div class="col-md-6 mb-3">
+          <label for="aggregation-0" class="form-label">Aggregate/%</label>
+          <input type="text" class="form-control" name="aggregation-0" id="aggregation-0" maxlength="3" minlength="1" onkeypress="validateNumberkey(event,'aggregation-0')" oninput="validateAggregation('aggregation-0')" required>
+          <div id="aggregation-0Error" class="error-message"></div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="file-0" class="form-label">Upload Certificates</label>
+          <input type="file" class="form-control" name="file-0" id="file-0" required>
+        </div>
       </div>
     </div>
-    <button class="btn  m-3" onclick="addEducation()" style="background-color: #2c3e50; color: white;">Add
-      Education</button>
-    <!-- <button class="btn  m-3" onclick="removeEducation()" style="background-color: #2c3e50; color: white;"> Remove Education</button> -->
+    <button class="add-btn" onclick="addEducation()">Add Education</button>
 
-    <!-- <div><b>*Please justify with reason in case of gap between educations to education:</b></div> -->
-    <!-- ?????????????????? -->
-
-
-    <div class="mt-2"> <b style="font-size: 25px;">Employment History </b>(Kindly mention all your employments including
-      current one)<div>
-        <hr style="border: 2px solid #34495e; width : 600px ; margin-left: 0;">
-        <div id="experience-container">
-          <div style="margin-left: 50px;" class="experience-entry">
-            <div class="mt-2">Company Name :-<input type="text" style="margin-left: 30px;" name="companyname-0"
-                id="companyname-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'companyname-0')"
-                oninput="validateName('companyname-0','Company Name')" required>
-              <div id="companyname-0Error" style="color: red; font-size: 12px;margin-left:160px;"></div>
-            </div>
-            <div class="mt-2">Designation/Role :-<input type="text" style="margin-left: 25px;" name="role-0"
-                id="role-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'role-0')"
-                oninput="validateName('role-0','Role')" required>
-              <div id="role-0Error" style="color: red; font-size: 12px;margin-left:160px;"></div>
-            </div>
-            <div class="mt-2">Last Project Name :-<input type="text" style="margin-left: 18px;" name="projectName-0"
-                id="projectName-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'projectName-0')"
-                oninput="validateName('projectName-0','ProjectName')" required>
-              <div id="projectName-0Error" style="color: red; font-size: 12px;margin-left:160px;"></div>
-            </div>
-            <div class="mt-2">Company Start Date:-<input type="date" style="margin-left: 10px;" name="startDate-0"
-                id="startDate-0" oninput="validateExperienceDates()" required>
-              <div id="startDate-0Error" style="color: red; font-size: 12px;margin-left:160px;"></div>
-            </div>
-            <div class="mt-2">Company End Date:-<input type="date" style="margin-left: 15px;" id="endDate-0"
-                name="endDate-0" oninput="validateExperienceDates()" required>
-              <div id="endDate-0Error2" style="color: red; font-size: 12px;margin-left:160px;"></div>
-            </div>
-            <div class="mt-2">Key Client Name:-<input type="text" style="margin-left: 32px;" name="clientName-0"
-                id="clientName-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'clientName-0')"
-                oninput="validateName('clientName-0','ClientName')" required>
-              <div id="clientName-0Error" style="color: red; font-size: 12px;margin-left:160px;"></div>
-            </div>
-            <div class="mt-2">Location :-<input type="text" style="margin-left: 85px;" name="companyLocation-0"
-                id="companyLocation-0" onkeypress="validateKey(event,'companyLocation-0')"
-                oninput="validateName('companyLocation-0','Location')" required>
-              <div id="companyLocation-0Error" style="color: red; font-size: 12px;margin-left:160px;"></div>
-            </div>
-          </div>
+    <h3 class="mt-4">Employment History</h3>
+    <b>(Kindly mention all your employments including current one)</b>
+    <hr class="section-divider">
+    <div id="experience-container">
+      <div class="experience-entry row mb-3">
+        <div class="col-md-6 mb-3">
+          <label for="companyname-0" class="form-label">Company Name</label>
+          <input type="text" class="form-control" name="companyname-0" id="companyname-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'companyname-0')" oninput="validateName('companyname-0','Company Name')" required>
+          <div id="companyname-0Error" class="error-message"></div>
         </div>
-        <button class="btn mt-3" onclick="addExperience()" style="background-color: #2c3e50; color: white;">Add
-          Experience</button>
-        <!-- <button class="btn mt-3" onclick="removeExperience()" style="background-color: #2c3e50; color: white;margin-left: 20px;">Remove Experience</button> -->
-
-
-        <!-- <div><b>*Please justify with reason in case of gap between educations to employment OR Employment to Employment</b></div> -->
-        <h3 class="mt-2">Address Details:</h3>
-        <hr style="border: 2px solid #34495e; width : 600px ; margin-left: 0;">
-        <div>
-          <div class="mt-3" style="margin-left: 50px;"> Permanent Address :-<input type="text"
-              style="margin-left: 22px;" id="pAddress" minlength="5" maxlength="30" required>
-            <div id="pAddressError" style="color: red; font-size: 12px;margin-left:180px;"></div>
-          </div>
-
-          <div class="mt-3" style="margin-left: 50px;"> Street :-<input type="text" style="margin-left: 115px;"
-              id="pStreet" minlength="5" maxlength="30" onkeypress="validateKey(event,'pStreet')"
-              oninput="validateName('pStreet','Street')" required>
-            <div id="pStreetError" style="color: red; font-size: 12px;margin-left:180px;"></div>
-          </div>
-
-          <div class="mt-3" style="margin-left: 50px;"> City :-<input type="text" style="margin-left: 128px;"
-              id="pCity" minlength="5" maxlength="30" onkeypress="validateKey(event,'pCity')"
-              oninput="validateName('pCity','City')" required>
-            <div id="pCityError" style="color: red; font-size: 12px;margin-left:160px;"></div>
-          </div>
-
-          <div class="mt-3" style="margin-left: 50px;"> State :-<input type="text" style="margin-left: 118px;"
-              id="pState" minlength="5" maxlength="30" onkeypress="validateKey(event,'pState')"
-              oninput="validateName('pState','Street')" required>
-            <div id="pStateError" style="color: red; font-size: 12px;margin-left:160px;"></div>
-          </div>
-
-          <div class="mt-3" style="margin-left: 50px;"> Country :-<input type="text" style="margin-left: 95px;"
-              id="pCountry" minlength="5" maxlength="30" onkeypress="validateKey(event,'pCountry')"
-              oninput="validateName('pCountry','Country')" required>
-            <div id="pCountryError" style="color: red; font-size: 12px;margin-left:160px;"></div>
-          </div>
-
-          <div class="mt-3" style="margin-left: 50px;"> Pincode :-<input type="text" style="margin-left: 94px;"
-              id="pPincode" minlength="6" maxlength="6" onkeypress="validateNumberkey(event,'pPincode')" required>
-          </div>
-
-
-          <div class="mt-2"><input type="checkbox" id="copyaddress" style="margin-left: 10px;"
-              onclick="copyaddress()"><span style="margin-left: 10px;">is current address as same as Permanent
-              address</span></div>
-          <div>
-            <div class="mt-2"><b style="font-size: 20px;">Current Address - </b>(All address details for last 5 years,
-              start from latest. Dates mandatory to be filled)</div>
-            <hr style="border: 2px solid #34495e; width : 600px ; margin-left: 0;">
-            <div class="mt-3" style="margin-left: 50px;"> Current Address :-<input type="text" id="cAddress"
-                style="margin-left: 42px;" minlength="5" maxlength="30" required>
-              <div id="cAddressError" style="color: red; font-size: 12px;margin-left:180px;"></div>
-            </div>
-            <div class="mt-3" style="margin-left: 50px;"> Street :-<input type="text" id="cStreet"
-                style="margin-left: 115px;" minlength="5" maxlength="30" onkeypress="validateKey(event,'cStreet')"
-                oninput="validateName('cStreet','Street')" required>
-              <div id="cStreetError" style="color: red; font-size: 12px;margin-left:180px;"></div>
-            </div>
-            <div class="mt-3" style="margin-left: 50px;"> City :-<input type="text" id="cCity"
-                style="margin-left: 128px;" minlength="5" maxlength="30" onkeypress="validateKey(event,'cCity')"
-                oninput="validateName('cCity','City')" required>
-              <div id="cCityError" style="color: red; font-size: 12px;margin-left:180px;"></div>
-            </div>
-            <div class="mt-3" style="margin-left: 50px;"> State :-<input type="text" id="cState"
-                style="margin-left: 118px;" minlength="5" maxlength="30" onkeypress="validateKey(event,'cState')"
-                oninput="validateName('cState','State')" required>
-              <div id="cStateError" style="color: red; font-size: 12px;margin-left:180px;"></div>
-            </div>
-            <div class="mt-3" style="margin-left: 50px;"> Country :-<input type="text" id="cCountry"
-                style="margin-left: 95px;" minlength="5" maxlength="30" onkeypress="validateKey(event,'cCountry')"
-                oninput="validateName('cCountry','Country')" required>
-              <div id="cCountryError" style="color: red; font-size: 12px;margin-left:180px;"></div>
-            </div>
-            <div class="mt-3" style="margin-left: 50px;"> Pincode :-<input type="text" id="cPincode"
-                style="margin-left: 94px;" minlength="6" maxlength="6"
-                onkeypress="validateNumberkey(event,'cPincode')" oninput="validateNumberkey(event,'cPincode')"
-                required></div>
-          </div>
-          <!-- <div class="mt-4"><b>Please justify Gaps in stay / movement: -</b></div> -->
-
+        <div class="col-md-6 mb-3">
+          <label for="role-0" class="form-label">Designation/Role</label>
+          <input type="text" class="form-control" name="role-0" id="role-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'role-0')" oninput="validateName('role-0','Role')" required>
+          <div id="role-0Error" class="error-message"></div>
         </div>
-        <h3>Bank Details : </h3>
-        <hr style="border: 2px solid #34495e; width : 600px ; margin-left: 0;">
-        <!-- <div class="mt-2">Bank Details :-<input type="text" style="margin-left: 227px; " id="bankdetails" oninput="validateName('bankdetails','BankDetails')" required>
-                 
-                  <div id="bankdetailsError" style="color: red; font-size: 12px;margin-left:340px;"></div></div> -->
-        <div style="margin-left: 30px;">
-          <div class="mt-2">Name as per Bank Form :-<input type="text" style="margin-left: 25px;" id="bname"
-              minlength="5" maxlength="30" onkeypress="validateKey(event,'bname')"
-              oninput="validateName('bname','Name')" required>
-            <div id="bnameError" style="color: red; font-size: 12px;margin-left:220px;"></div>
-          </div>
-          <div class="mt-2">Account No:-<input type="text" style="margin-left: 113px;" id="bankAccount" minlength="8"
-              maxlength="18" oninput="validateBankAccount()" required>
-            <div id="bankAccountError" style="color: red; font-size: 12px;margin-left:220px;"></div>
-          </div>
-          <div class="mt-2">IFSC code:-<input type="text" style="margin-left: 127px;" id="ifsc" minlength='11'
-              maxlength="11" oninput="validateIfsc()" required>
-            <div id="ifscError" style="color: red; font-size: 12px;margin-left:220px;"></div>
-          </div>
-          <div class="mt-2">Branch Name:-<input type="text" style="margin-left: 100px;" id="branchName" minlength="5"
-              maxlength="30" onkeypress="validateKey(event,'branchName')"
-              oninput="validateName('branchName','BranchName')" required>
-            <div id="branchNameError" style="color: red; font-size: 12px;margin-left:120px;"></div>
-          </div>
+        <div class="col-md-6 mb-3">
+          <label for="projectName-0" class="form-label">Last Project Name</label>
+          <input type="text" class="form-control" name="projectName-0" id="projectName-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'projectName-0')" oninput="validateName('projectName-0','Project Name')" required>
+          <div id="projectName-0Error" class="error-message"></div>
         </div>
+        <div class="col-md-6 mb-3">
+          <label for="startDate-0" class="form-label">Company Start Date</label>
+          <input type="date" class="form-control" name="startDate-0" id="startDate-0" oninput="validateExperienceDates('startDate-0','endDate-0')" required>
+          <div id="startDate-0Error" class="error-message"></div>
         </div>
+        <div class="col-md-6 mb-3">
+          <label for="endDate-0" class="form-label">Company End Date</label>
+          <input type="date" class="form-control" id="endDate-0" name="endDate-0" oninput="validateExperienceDates('startDate-0','endDate-0')" required>
+          <div id="endDate-0Error" class="error-message"></div>
         </div>
-        <button class="btn mt-4" style="background-color: #2c3e50;color: white; margin-left: 40%;" onclick="submit()">submit</button>
+        <div class="col-md-6 mb-3">
+          <label for="clientName-0" class="form-label">Key Client Name</label>
+          <input type="text" class="form-control" name="clientName-0" id="clientName-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'clientName-0')" oninput="validateName('clientName-0','Client Name')" required>
+          <div id="clientName-0Error" class="error-message"></div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="companyLocation-0" class="form-label">Location</label>
+          <input type="text" class="form-control" name="companyLocation-0" id="companyLocation-0" onkeypress="validateKey(event,'companyLocation-0')" oninput="validateName('companyLocation-0','Location')" required>
+          <div id="companyLocation-0Error" class="error-message"></div>
+        </div>
       </div>
-      <script>
+    </div>
+    <button class="add-btn" onclick="addExperience()">Add Experience</button>
 
-        function validateExperienceDates() {
-          const startInput = document.getElementById('startDate-0');
-          const endInput = document.getElementById('endDate-0');
-          const errorMsg = document.getElementById('startDate-0Error');
-          const errorMsg2 = document.getElementById('endDate-0Error2');
+    <h3 class="mt-4">Address Details</h3>
+    <hr class="section-divider">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="pAddress" class="form-label">Permanent Address</label>
+        <input type="text" class="form-control" id="pAddress" minlength="5" maxlength="30" required>
+        <div id="pAddressError" class="error-message"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="pStreet" class="form-label">Street</label>
+        <input type="text" class="form-control" id="pStreet" minlength="5" maxlength="30" onkeypress="validateKey(event,'pStreet')" oninput="validateName('pStreet','Street')" required>
+        <div id="pStreetError" class="error-message"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="pCity" class="form-label">City</label>
+        <input type="text" class="form-control" id="pCity" minlength="5" maxlength="30" onkeypress="validateKey(event,'pCity')" oninput="validateName('pCity','City')" required>
+        <div id="pCityError" class="error-message"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="pState" class="form-label">State</label>
+        <input type="text" class="form-control" id="pState" minlength="5" maxlength="30" onkeypress="validateKey(event,'pState')" oninput="validateName('pState','State')" required>
+        <div id="pStateError" class="error-message"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="pCountry" class="form-label">Country</label>
+        <input type="text" class="form-control" id="pCountry" minlength="5" maxlength="30" onkeypress="validateKey(event,'pCountry')" oninput="validateName('pCountry','Country')" required>
+        <div id="pCountryError" class="error-message"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="pPincode" class="form-label">Pincode</label>
+        <input type="text" class="form-control" id="pPincode" minlength="6" maxlength="6" onkeypress="validateNumberkey(event,'pPincode')" oninput="validateNumber('pPincode','Pincode')" required>
+        <div id="pPincodeError" class="error-message"></div>
+      </div>
+      <div class="col-12 mb-3">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="copyAddress" onclick="copyAddress()">
+          <label class="form-check-label" for="copyAddress">Is current address same as permanent address?</label>
+        </div>
+      </div>
+      <div class="col-12 mb-3">
+        <b>Current Address</b> (All address details for last 5 years, start from latest. Dates mandatory)
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="cAddress" class="form-label">Current Address</label>
+        <input type="text" class="form-control" id="cAddress" minlength="5" maxlength="30" required>
+        <div id="cAddressError" class="error-message"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="cStreet" class="form-label">Street</label>
+        <input type="text" class="form-control" id="cStreet" minlength="5" maxlength="30" onkeypress="validateKey(event,'cStreet')" oninput="validateName('cStreet','Street')" required>
+        <div id="cStreetError" class="error-message"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="cCity" class="form-label">City</label>
+        <input type="text" class="form-control" id="cCity" minlength="5" maxlength="30" onkeypress="validateKey(event,'cCity')" oninput="validateName('cCity','City')" required>
+        <div id="cCityError" class="error-message"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="cState" class="form-label">State</label>
+        <input type="text" class="form-control" id="cState" minlength="5" maxlength="30" onkeypress="validateKey(event,'cState')" oninput="validateName('cState','State')" required>
+        <div id="cStateError" class="error-message"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="cCountry" class="form-label">Country</label>
+        <input type="text" class="form-control" id="cCountry" minlength="5" maxlength="30" onkeypress="validateKey(event,'cCountry')" oninput="validateName('cCountry','Country')" required>
+        <div id="cCountryError" class="error-message"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="cPincode" class="form-label">Pincode</label>
+        <input type="text" class="form-control" id="cPincode" minlength="6" maxlength="6" onkeypress="validateNumberkey(event,'cPincode')" oninput="validateNumber('cPincode','Pincode')" required>
+        <div id="cPincodeError" class="error-message"></div>
+      </div>
+    </div>
 
+    <h3 class="mt-4">Bank Details</h3>
+    <hr class="section-divider">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="bname" class="form-label">Name as per Bank</label>
+        <input type="text" class="form-control" id="bname" minlength="5" maxlength="30" onkeypress="validateKey(event,'bname')" oninput="validateName('bname','Name')" required>
+        <div id="bnameError" class="error-message"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="bankAccount" class="form-label">Account No</label>
+        <input type="text" class="form-control" id="bankAccount" minlength="8" maxlength="18" oninput="validateBankAccount()" required>
+        <div id="bankAccountError" class="error-message"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="ifsc" class="form-label">IFSC Code</label>
+        <input type="text" class="form-control" id="ifsc" minlength="11" maxlength="11" oninput="validateIfsc()" required>
+        <div id="ifscError" class="error-message"></div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="branchName" class="form-label">Branch Name</label>
+        <input type="text" class="form-control" id="branchName" minlength="5" maxlength="30" onkeypress="validateKey(event,'branchName')" oninput="validateName('branchName','Branch Name')" required>
+        <div id="branchNameError" class="error-message"></div>
+      </div>
+    </div>
+    <button class="btn btn-primary mt-4 w-100" onclick="submit()">Submit</button>
+  </div>
 
-          const startDate = new Date(startInput.value);
-          const endDate = new Date(endInput.value);
-          const today = new Date();
-          today.setHours(0, 0, 0, 0); // reset time for accurate comparison
+  <script>
+    function validateExperienceDates(startId, endId) {
+      const startInput = document.getElementById(startId);
+      const endInput = document.getElementById(endId);
+      const errorMsg = document.getElementById(`${startId}Error`);
+      const errorMsg2 = document.getElementById(`${endId}Error`);
 
-          // Clear previous errors
-          errorMsg.textContent = '';
-          startInput.style.border = '';
-          endInput.style.border = '';
+      const startDate = new Date(startInput.value);
+      const endDate = new Date(endInput.value);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
 
-          if (isNaN(startDate) || isNaN(endDate)) {
-            return; // skip validation until both are selected
-          }
+      errorMsg.textContent = '';
+      errorMsg2.textContent = '';
+      startInput.style.border = '';
+      endInput.style.border = '';
 
-          if (startDate >= endDate) {
-            errorMsg.textContent = "Start date must be before end date.";
-            startInput.style.border = '2px solid red';
-            endInput.style.border = '2px solid red';
-            return;
-          }
+      if (isNaN(startDate) || isNaN(endDate)) {
+        return;
+      }
 
-          if (startDate >= today) {
-            errorMsg.textContent = "Dates must be before today's date.";
-            startInput.style.border = '2px solid red';
-            endInput.style.border = '2px solid red';
-            return;
-          }
-          if (endDate >= today) {
-            errorMsg2.textContent = "EndDate date must be before end date.";
-            startInput.style.border = '2px solid red';
-            endInput.style.border = '2px solid red';
-            return;
-          }
-          else {
-            errorMsg2.textContent = '';
-          }
-        }
+      if (startDate >= endDate) {
+        errorMsg.textContent = "Start date must be before end date.";
+        startInput.style.border = '2px solid red';
+        endInput.style.border = '2px solid red';
+        return;
+      }
 
-
-        
-       async function submit() {
-          const fields = [
-            'name', 'email', 'phone', 'phoneAl', 'marital', 'doB', 'gender', 'bloodGroup',
-            'aadhar', 'pan', 'gName', 'gPnum',
-            'pAddress', 'pStreet', 'pCity', 'pState', 'pCountry', 'pPincode',
-            'cAddress', 'cStreet', 'cCity', 'cState', 'cCountry', 'cPincode',
-            'bname', 'bankAccount', 'ifsc', 'branchName'
-          ];
-
-          let isComplete = true;
-          let formData = {};
-
-          // General fields
-          for (let field of fields) {
-            const value = document.getElementById(field).value.trim();
-            if (!value) {
-              isComplete = false;
-              alert("Please fill all required fields.");
-              document.getElementById(field).focus();
-              break;
-            }
-            formData[field] = value;
-          }
-
-          // Education section
-          const educationEntries = [];
-          const eduSections = document.querySelectorAll('[id^="education-"]');
-
-          eduSections.forEach((section, index) => {
-            const degree = document.getElementById(`degree-${index}`)?.value.trim();
-            const collegeName = document.getElementById(`collegeName-${index}`)?.value.trim();
-            const stream = document.getElementById(`stream-${index}`)?.value.trim();
-            const yearOfPassing = document.getElementById(`yearOfPassing-${index}`)?.value.trim();
-            const location = document.getElementById(`location-${index}`)?.value.trim();
-            const aggregation = document.getElementById(`aggregation-${index}`)?.value.trim();
-            const file = document.getElementById(`file-${index}`)?.value.trim();
-
-            if (!degree || !collegeName || !stream || !yearOfPassing || !location || !aggregation || !file) {
-              isComplete = false;
-              alert("Please complete all education fields.");
-              return;
-            }
-
-            educationEntries.push({ degree, collegeName, stream, yearOfPassing, location, aggregation, file });
-          });
-
-          formData.education = educationEntries;
-
-          // Experience section
-          const experienceEntries = [];
-          const expSections = document.querySelectorAll('.experience-entry'); // Using .experience-entry class here
-
-          expSections.forEach((section, index) => {
-            const companyName = document.getElementById(`companyname-${index}`)?.value.trim();
-            const jobTitle = document.getElementById(`role-${index}`)?.value.trim();
-            const projectName = document.getElementById(`projectName-${index}`)?.value.trim();
-            const startDate = document.getElementById(`startDate-${index}`)?.value.trim();
-            const endDate = document.getElementById(`endDate-${index}`)?.value.trim();
-            const clientName = document.getElementById(`clientName-${index}`)?.value.trim();
-            const location = document.getElementById(`companyLocation-${index}`)?.value.trim();
-
-            if (!companyName || !jobTitle || !projectName || !startDate || !endDate || !clientName || !location) {
-              isComplete = false;
-              alert("Please complete all experience fields.");
-              return; // Exit loop if experience section is incomplete
-            }
-
-            experienceEntries.push({
-              companyName, jobTitle, projectName, startDate, endDate, clientName, location
-            });
-          });
-
-          formData.experience = experienceEntries;
-
-          // Store in localStorage as an array////////////////////////////////////////
-           try {
-    const response = await fetch("http://localhost:8080/api/onboarding/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(formData)
-    });
-
-    if (response.ok) {
-      const result = await response.json();
-      alert("Form submitted successfully! ID: " + result.id);
-    } else {
-      alert("Error submitting form. Please try again.");
+      if (startDate >= today) {
+        errorMsg.textContent = "Start date must be before today's date.";
+        startInput.style.border = '2px solid red';
+        endInput.style.border = '2px solid red';
+        return;
+      }
+      if (endDate >= today) {
+        errorMsg2.textContent = "End date must be before today's date.";
+        startInput.style.border = '2px solid red';
+        endInput.style.border = '2px solid red';
+        return;
+      }
     }
-  } catch (error) {
-    console.error("Error:", error);
-    alert("Something went wrong.");
-  }
-}
 
+    async function submit() {
+      const fields = [
+        'name', 'email', 'phone', 'phoneAl', 'marital', 'doB', 'gender', 'bloodGroup',
+        'aadhar', 'pan', 'gName', 'gPnum',
+        'pAddress', 'pStreet', 'pCity', 'pState', 'pCountry', 'pPincode',
+        'cAddress', 'cStreet', 'cCity', 'cState', 'cCountry', 'cPincode',
+        'bname', 'bankAccount', 'ifsc', 'branchName'
+      ];
 
+      let isComplete = true;
+      let formData = {};
 
-
-        function validateName(id, fieldname) {
-          var name = document.getElementById(id).value;
-          var regex = /^[a-zA-Z]+$/;
-          if (name.length < 5) {
-            // document.getElementById("name").style.border="1px solid red";
-            document.getElementById(id + "Error").textContent = fieldname + " " + "Should be at least 5 min character and maximum of 30";
-            return false;
-          }
-          else if (!regex.test(name)) {
-            document.getElementById(id + "Error").textContent = fieldname + " " + "Should be at least 5 min character";
-
-            // document.getElementById("name");
-            return false;
-          }
-          else {
-            document.getElementById(id + "Error").textContent = '';
-          }
-          return true;
+      for (let field of fields) {
+        const value = document.getElementById(field).value.trim();
+        if (!value) {
+          isComplete = false;
+          alert("Please fill all required fields.");
+          document.getElementById(field).focus();
+          break;
         }
-        function validateKey() {
-          var key = event.key;
-          var regex = /^[a-zA-Z ]$/;
-          if (!regex.test(key)) {
-            event.preventDefault();
-          }
-        }
+        formData[field] = value;
+      }
 
-        function validateNumberkey() {
-          var key = event.key;
-          var regex = /^[0-9]$/;
-          if (!regex.test(key)) {
-            event.preventDefault();
-          }
-        }
-        function validateEmail() {
-          var input = document.getElementById('email');
-          var error = document.getElementById('emailError');
-          var value = input.value.trim().toLowerCase();
+      const educationEntries = [];
+      const eduSections = document.querySelectorAll('.education-entry');
+      eduSections.forEach((section, index) => {
+        const degree = document.getElementById(`degree-${index}`)?.value.trim();
+        const collegeName = document.getElementById(`collegeName-${index}`)?.value.trim();
+        const stream = document.getElementById(`stream-${index}`)?.value.trim();
+        const yearOfPassing = document.getElementById(`yearOfPassing-${index}`)?.value.trim();
+        const location = document.getElementById(`location-${index}`)?.value.trim();
+        const aggregation = document.getElementById(`aggregation-${index}`)?.value.trim();
+        const file = document.getElementById(`file-${index}`)?.value.trim();
 
-          // Basic email pattern
-          var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-          if (value.length === 0) {
-            error.textContent = "";
-            return false;
-          }
-
-          if (!emailPattern.test(value)) {
-            error.textContent = "Please enter a valid email address.";
-            return false;
-          }
-
-          // Allowed domains
-          if (value.endsWith("@gmail.com") || value.endsWith("@yahoo.com") || value.endsWith("@outlook.com")) {
-            error.textContent = ""; // Valid
-          } else {
-            error.textContent = "Only Gmail, Yahoo, or Outlook emails are allowed.";
-          }
-          const dotComIndex = value.indexOf(".com");
-          if (dotComIndex !== -1 && value.length > dotComIndex + 4) {
-            input.value = value.substring(0, dotComIndex + 4);
-            error.textContent = "No characters allowed after .com"
-          }
-
-          return true;
-
+        if (!degree || !collegeName || !stream || !yearOfPassing || !location || !aggregation || !file) {
+          isComplete = false;
+          alert("Please complete all education fields.");
+          return;
         }
 
-        function phoneNumber() {
-          var phoneNumber = document.getElementById("phone").value;
-          var phoneRegex = /^\d{10}$/;
-          if (phoneNumber.length != 10) {
-            document.getElementById("phoneNumberError").innerText = "Phone Number Must be 10 Digits"
-            return false;
-          }
-          else if (!phoneRegex.test(phoneNumber)) {
-            document.getElementById("phoneNumberError").innerText = "Phone Number Must be 10 Digits"
-            return false;
-          }
-          else {
-            document.getElementById("phoneNumberError").innerText = "";
-          }
-          return true;
+        educationEntries.push({ degree, collegeName, stream, yearOfPassing, location, aggregation, file });
+      });
+
+      formData.education = educationEntries;
+
+      const experienceEntries = [];
+      const expSections = document.querySelectorAll('.experience-entry');
+      expSections.forEach((section, index) => {
+        const companyName = document.getElementById(`companyname-${index}`)?.value.trim();
+        const jobTitle = document.getElementById(`role-${index}`)?.value.trim();
+        const projectName = document.getElementById(`projectName-${index}`)?.value.trim();
+        const startDate = document.getElementById(`startDate-${index}`)?.value.trim();
+        const endDate = document.getElementById(`endDate-${index}`)?.value.trim();
+        const clientName = document.getElementById(`clientName-${index}`)?.value.trim();
+        const location = document.getElementById(`companyLocation-${index}`)?.value.trim();
+
+        if (!companyName || !jobTitle || !projectName || !startDate || !endDate || !clientName || !location) {
+          isComplete = false;
+          alert("Please complete all experience fields.");
+          return;
         }
 
-        function phoneAlNumber() {
-          var phoneNumber = document.getElementById("phoneAl").value;
-          var phoneRegex = /^\d{10}$/;
-          if (phoneNumber.length != 10) {
-            document.getElementById("alternateNumberError").innerText = "Phone Number Must be 10 Digits"
-            return false;
-          }
-          else if (!phoneRegex.test(phoneNumber)) {
-            document.getElementById("alternateNumberError").innerText = "Phone Number Must be 10 Digits";
-            return false;
-          }
-          else {
-            document.getElementById("alternateNumberError").innerText = "";
-          }
-          return true;
-        }
-        function validateDob(id, fieldName) {
-          var dob = new Date(document.getElementById(id).value);
-          var today = new Date();
+        experienceEntries.push({
+          companyName, jobTitle, projectName, startDate, endDate, clientName, location
+        });
+      });
 
-          var age = today.getFullYear() - dob.getFullYear();
-          var monthDiff = today.getMonth() - dob.getMonth();
+      formData.experience = experienceEntries;
 
-          if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
-            age--;
-          }
-
-          var errorElement = document.getElementById(id + "Error");
-
-          if (age < 22) {
-            errorElement.innerText = "You should be at least 22 years old.";
-            document.getElementById(id).style.border = "1px solid red";
-            return false;
-          } else {
-            errorElement.innerText = "";
-            document.getElementById(id).style.border = "1px solid green";
-            return true;
-          }
-        }
-        function formatAadhar() {
-          let input = document.getElementById('aadhar');
-          let error = document.getElementById('aadharError');
-
-          // Remove all non-digit characters
-          let value = input.value.replace(/\D/g, '');
-
-          // Limit to maximum 12 digits
-          if (value.length > 12) {
-            value = value.slice(0, 12);
-          }
-          // Add spaces after every 4 digits
-          let formattedValue = value.match(/.{1,4}/g)?.join(' ') || '';
-
-          input.value = formattedValue;
-          // Validation: Check if exactly 12 digits
-          if (value.length === 12) {
-            // Check if first digit is between 2 and 9
-            if (parseInt(value.charAt(0)) >= 2) {
-              error.textContent = ""; // No error
-            } else {
-              error.textContent = "Aadhar number should start with digits between 2-9.";
-              return false;
-            }
-          } else {
-            error.textContent = "Aadhar number must be exactly 12 digits.";
-            return false;
-          }
-          return true;
-        }
-        function validatePAN() {
-          let input = document.getElementById('pan');
-          let error = document.getElementById('panError');
-
-          // Always convert to uppercase automatically
-          input.value = input.value.toUpperCase();
-
-          let value = input.value;
-
-          const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
-
-          if (value.length === 10) {
-            if (panPattern.test(value)) {
-              error.textContent = ""; // Valid PAN
-            } else {
-              error.textContent = "Invalid PAN format. Format should be: 5 letters, 4 numbers, 1 letter.";
-            }
-          } else if (value.length > 0 && value.length < 10) {
-            error.textContent = "PAN must be exactly 10 characters.";
-          } else {
-            error.textContent = "";
-            return true;
-          }
-        }
-
-
-
-        function validateYearOfPassing() {
-
-          let input = document.getElementById('yearOfPassing-0');
-          let error = document.getElementById('yearOfPassing-0Error');
-
-          // Remove non-digits immediately
-          input.value = input.value.replace(/\D/g, '');
-
-          let value = input.value;
-          let currentYear = new Date().getFullYear();
-
-          if (value.length === 4) {
-            let year = parseInt(value);
-
-            if (year >= 1950 && year <= currentYear + 2) {
-              error.textContent = ""; // Valid year
-            } else {
-              error.textContent = "Enter a valid year between 1950 and " + (currentYear + 2) + ".";
-            }
-          } else if (value.length > 0 && value.length < 4) {
-            error.textContent = "Year must be exactly 4 digits.";
-          } else {
-            error.textContent = "";
-            return true;
-          }
-        }
-        function validateAggregation() {
-          var input = document.getElementById("aggregation-0");
-          var error = document.getElementById("aggregation-0Error");
-
-          var value = input.value.trim();
-          var score = parseFloat(value);
-          if (score.length === 0) {
-            error.textContent = "Percentage is Required."
-            return false;
-          }
-          else if (score < 0 || score > 100) {
-            error.textContent = "Enter apercentage between 0 to 100"
-            return false;
-          }
-          else {
-            error.textContent = ""
-            return true;
-          }
-        }
-
-
-
-        function validateIfsc() {
-          let input = document.getElementById('ifsc');
-          let error = document.getElementById('ifscError');
-
-          // Always convert input to uppercase
-          input.value = input.value.toUpperCase();
-
-          let value = input.value;
-
-          const ifscPattern = /^[A-Z]{4}0[A-Z0-9]{6}$/;
-
-          if (value.length === 11) {
-            if (ifscPattern.test(value)) {
-              error.textContent = ""; // Valid IFSC
-            } else {
-              error.textContent = "Invalid IFSC format. Should be 4 letters, 0, then 6 letters/numbers.";
-            }
-          } else if (value.length > 0 && value.length < 11) {
-            error.textContent = "IFSC must be exactly 11 characters.";
-          } else {
-            error.textContent = "";
-          }
-        }
-        function validateBankAccount() {
-          let input = document.getElementById('bankAccount');
-          let error = document.getElementById('bankAccountError');
-
-          // Remove non-digits immediately
-          input.value = input.value.replace(/\D/g, '');
-
-          let value = input.value;
-
-          if (value.length > 0 && (value.length < 9 || value.length > 18)) {
-            error.textContent = "Bank account number must be between 9 and 18 digits.";
-          } else {
-            error.textContent = ""; // Valid
-            return false;
-          }
-        }
-
-
-        function addEducation() {
-          const container = document.getElementById("education-container");
-          const entries = container.querySelectorAll('.education-entry');
-          const newIndex = entries.length;
-
-          const firstEntry = entries[0];
-          const newEntry = firstEntry.cloneNode(true);
-          newEntry.classList.add('education-entry');
-          newEntry.id = `education-${newIndex}`;
-
-          const inputs = newEntry.querySelectorAll("input, select, textarea");
-          inputs.forEach(input => {
-            input.value = "";
-            if (input.id) {
-              const baseId = input.id.split('-')[0];
-              input.id = `${baseId}-${newIndex}`;
-            }
-            if (input.name) {
-              const baseName = input.name.split('-')[0];
-              input.name = `${baseName}-${newIndex}`;
-            }
-          
+      if (isComplete) {
+        try {
+          const response = await fetch("http://localhost:8080/api/onboarding/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
           });
 
-          const buttonWrapper = document.createElement("div");
-          buttonWrapper.className = "button-wrapper";
-          const removeBtn = document.createElement("button");
-          removeBtn.className = "remove-btn";
-          removeBtn.textContent = "Remove";
-          removeBtn.onclick = () => {
-            newEntry.remove();
+          if (response.ok) {
+            const result = await response.json();
+            alert("Form submitted successfully! ID: " + result.id);
+          } else {
+            alert("Error submitting form. Please try again.");
           }
-          buttonWrapper.appendChild(removeBtn);
-          newEntry.insertBefore(buttonWrapper, newEntry.firstChild)
-          container.appendChild(newEntry);
+        } catch (error) {
+          console.error("Error:", error);
+          alert("Something went wrong.");
         }
-        //let experienceCount = 1; // Declare globally
+      }
+    }
 
-        function addExperience() {
-          const container = document.getElementById("experience-container");
-          const entries = container.querySelectorAll('.experience-entry');
-          const newIndex = entries.length;
+    function validateName(id, fieldname) {
+      var name = document.getElementById(id).value;
+      var regex = /^[a-zA-Z ]+$/;
+      if (name.length < 5) {
+        document.getElementById(id + "Error").textContent = `${fieldname} should be at least 5 characters and maximum of 30`;
+        return false;
+      } else if (!regex.test(name)) {
+        document.getElementById(id + "Error").textContent = `${fieldname} should contain only letters and spaces`;
+        return false;
+      } else {
+        document.getElementById(id + "Error").textContent = '';
+      }
+      return true;
+    }
 
-          const firstEntry = entries[0];
-          const newEntry = firstEntry.cloneNode(true);
-          newEntry.classList.add('experience-entry');
-          newEntry.id = `experience-${newIndex}`;
+    function validateKey(event) {
+      var key = event.key;
+      var regex = /^[a-zA-Z ]$/;
+      if (!regex.test(key)) {
+        event.preventDefault();
+      }
+    }
 
-          const inputs = newEntry.querySelectorAll("input, select, textarea");
-          inputs.forEach(input => {
-            input.value = "";
-            if (input.id) {
-              const baseId = input.id.split('-')[0];
-              input.id = `${baseId}-${newIndex}`;
-            }
-            if (input.name) {
-              const baseName = input.name.split('-')[0];
-              input.name = `${baseName}-${newIndex}`;
-            }
-          });
+    function validateNumberkey(event) {
+      var key = event.key;
+      var regex = /^[0-9]$/;
+      if (!regex.test(key)) {
+        event.preventDefault();
+      }
+    }
 
-          const buttonWrapper = document.createElement("div");
-          buttonWrapper.className = "button-wrapper";
-          const removeBtn = document.createElement("button");
-          removeBtn.className = "remove-btn mt-2";
-          removeBtn.textContent = "Remove";
-          removeBtn.onclick = () => {
-            newEntry.remove();
-          }
-          buttonWrapper.appendChild(removeBtn);
-          newEntry.insertBefore(buttonWrapper, newEntry.firstChild)
-          container.appendChild(newEntry);
+    function validateNumber(id, fieldname) {
+      var value = document.getElementById(id).value;
+      var regex = /^\d+$/;
+      if (value.length !== 6 && id.includes('Pincode')) {
+        document.getElementById(id + "Error").textContent = `${fieldname} must be 6 digits`;
+        return false;
+      } else if (value.length !== 10 && id.includes('Pnum')) {
+        document.getElementById(id + "Error").textContent = `${fieldname} must be 10 digits`;
+        return false;
+      } else if (!regex.test(value)) {
+        document.getElementById(id + "Error").textContent = `${fieldname} must contain only digits`;
+        return false;
+      } else {
+        document.getElementById(id + "Error").textContent = "";
+      }
+      return true;
+    }
+
+    function validateEmail() {
+      var input = document.getElementById('email');
+      var error = document.getElementById('emailError');
+      var value = input.value.trim().toLowerCase();
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (value.length === 0) {
+        error.textContent = "";
+        return false;
+      }
+
+      if (!emailPattern.test(value)) {
+        error.textContent = "Please enter a valid email address.";
+        return false;
+      }
+
+      if (value.endsWith("@gmail.com") || value.endsWith("@yahoo.com") || value.endsWith("@outlook.com")) {
+        error.textContent = "";
+      } else {
+        error.textContent = "Only Gmail, Yahoo, or Outlook emails are allowed.";
+        return false;
+      }
+
+      const dotComIndex = value.indexOf(".com");
+      if (dotComIndex !== -1 && value.length > dotComIndex + 4) {
+        input.value = value.substring(0, dotComIndex + 4);
+        error.textContent = "No characters allowed after .com";
+        return false;
+      }
+
+      return true;
+    }
+
+    function phoneNumber() {
+      var phoneNumber = document.getElementById("phone").value;
+      var phoneRegex = /^\d{10}$/;
+      if (phoneNumber.length !== 10 || !phoneRegex.test(phoneNumber)) {
+        document.getElementById("phoneNumberError").textContent = "Phone Number must be 10 digits";
+        return false;
+      } else {
+        document.getElementById("phoneNumberError").textContent = "";
+      }
+      return true;
+    }
+
+    function phoneAlNumber() {
+      var phoneNumber = document.getElementById("phoneAl").value;
+      var phoneRegex = /^\d{10}$/;
+      if (phoneNumber.length !== 10 || !phoneRegex.test(phoneNumber)) {
+        document.getElementById("alternateNumberError").textContent = "Alternate Number must be 10 digits";
+        return false;
+      } else {
+        document.getElementById("alternateNumberError").textContent = "";
+      }
+      return true;
+    }
+
+    function validateDob(id, fieldName) {
+      var dob = new Date(document.getElementById(id).value);
+      var today = new Date();
+      var age = today.getFullYear() - dob.getFullYear();
+      var monthDiff = today.getMonth() - dob.getMonth();
+
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+        age--;
+      }
+
+      var errorElement = document.getElementById(id + "Error");
+      if (age < 22) {
+        errorElement.textContent = "You should be at least 22 years old.";
+        document.getElementById(id).style.border = "1px solid red";
+        return false;
+      } else {
+        errorElement.textContent = "";
+        document.getElementById(id).style.border = "";
+        return true;
+      }
+    }
+
+    function formatAadhar() {
+      let input = document.getElementById('aadhar');
+      let error = document.getElementById('aadharError');
+      let value = input.value.replace(/\D/g, '');
+
+      if (value.length > 12) {
+        value = value.slice(0, 12);
+      }
+      let formattedValue = value.match(/.{1,4}/g)?.join(' ') || '';
+      input.value = formattedValue;
+
+      if (value.length === 12) {
+        if (parseInt(value.charAt(0)) >= 2) {
+          error.textContent = "";
+        } else {
+          error.textContent = "Aadhar number should start with digits between 2-9.";
+          return false;
         }
+      } else {
+        error.textContent = "Aadhar number must be exactly 12 digits.";
+        return false;
+      }
+      return true;
+    }
 
-        function copyaddress() {
-          var copyCheck = document.getElementById("copyaddress");
-          if (copyCheck.checked) {
-            document.getElementById("cAddress").value = document.getElementById("pAddress").value;
-            document.getElementById("cStreet").value = document.getElementById("pStreet").value;
-            document.getElementById("cCity").value = document.getElementById("pCity").value;
-            document.getElementById("cState").value = document.getElementById("pState").value;
-            document.getElementById("cCountry").value = document.getElementById("pCountry").value;
-            document.getElementById("cPincode").value = document.getElementById("pPincode").value;
+    function validatePAN() {
+      let input = document.getElementById('pan');
+      let error = document.getElementById('panError');
+      input.value = input.value.toUpperCase();
+      let value = input.value;
+      const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
 
-          }
-          else {
-            document.getElementById("cAddress").value = " ";
-            document.getElementById("cStreet").value = "";
-            document.getElementById("cCity").value = "";
-            document.getElementById("cState").value = "";
-            document.getElementById("cCountry").value = "";
-            document.getElementById("cPincode").value = "";
+      if (value.length === 10) {
+        if (panPattern.test(value)) {
+          error.textContent = "";
+        } else {
+          error.textContent = "Invalid PAN format. Format: 5 letters, 4 numbers, 1 letter.";
+        }
+      } else if (value.length > 0) {
+        error.textContent = "PAN must be exactly 10 characters.";
+      } else {
+        error.textContent = "";
+      }
+      return true;
+    }
+
+    function validateYearOfPassing(id) {
+      let input = document.getElementById(id);
+      let error = document.getElementById(id + 'Error');
+      input.value = input.value.replace(/\D/g, '');
+      let value = input.value;
+      let currentYear = new Date().getFullYear();
+
+      if (value.length === 4) {
+        let year = parseInt(value);
+        if (year >= 1950 && year <= currentYear + 2) {
+          error.textContent = "";
+        } else {
+          error.textContent = `Enter a valid year between 1950 and ${currentYear + 2}.`;
+        }
+      } else if (value.length > 0) {
+        error.textContent = "Year must be exactly 4 digits.";
+      } else {
+        error.textContent = "";
+      }
+      return true;
+    }
+
+    function validateAggregation(id) {
+      var input = document.getElementById(id);
+      var error = document.getElementById(id + "Error");
+      var value = input.value.trim();
+      var score = parseFloat(value);
+
+      if (!value) {
+        error.textContent = "Percentage is required.";
+        return false;
+      } else if (score < 0 || score > 100) {
+        error.textContent = "Enter a percentage between 0 to 100.";
+        return false;
+      } else {
+        error.textContent = "";
+      }
+      return true;
+    }
+
+    function validateIfsc() {
+      let input = document.getElementById('ifsc');
+      let error = document.getElementById('ifscError');
+      input.value = input.value.toUpperCase();
+      let value = input.value;
+      const ifscPattern = /^[A-Z]{4}0[A-Z0-9]{6}$/;
+
+      if (value.length === 11) {
+        if (ifscPattern.test(value)) {
+          error.textContent = "";
+        } else {
+          error.textContent = "Invalid IFSC format. Should be 4 letters, 0, then 6 letters/numbers.";
+        }
+      } else if (value.length > 0) {
+        error.textContent = "IFSC must be exactly 11 characters.";
+      } else {
+        error.textContent = "";
+      }
+      return true;
+    }
+
+    function validateBankAccount() {
+      let input = document.getElementById('bankAccount');
+      let error = document.getElementById('bankAccountError');
+      input.value = input.value.replace(/\D/g, '');
+      let value = input.value;
+
+      if (value.length > 0 && (value.length < 9 || value.length > 18)) {
+        error.textContent = "Bank account number must be between 9 and 18 digits.";
+      } else {
+        error.textContent = "";
+      }
+      return true;
+    }
+
+    function addEducation() {
+      const container = document.getElementById("education-container");
+      const entries = container.querySelectorAll('.education-entry');
+      const newIndex = entries.length;
+
+      const firstEntry = entries[0];
+      const newEntry = firstEntry.cloneNode(true);
+      newEntry.classList.add('education-entry');
+      newEntry.id = `education-${newIndex}`;
+
+      // Add remove button for dynamically added entries
+      const removeButton = document.createElement('div');
+      removeButton.className = 'button-wrapper';
+      removeButton.innerHTML = `<button class="remove-btn" onclick="this.parentElement.parentElement.remove()">Remove</button>`;
+      newEntry.prepend(removeButton);
+
+      const inputs = newEntry.querySelectorAll("input, select");
+      inputs.forEach(input => {
+        input.value = "";
+        if (input.id) {
+          const baseId = input.id.split('-')[0];
+          input.id = `${baseId}-${newIndex}`;
+          if (input.id.includes('yearOfPassing')) {
+            input.oninput = () => validateYearOfPassing(input.id);
+          } else if (input.id.includes('aggregation')) {
+            input.oninput = () => validateAggregation(input.id);
+          } else {
+            input.oninput = () => validateName(input.id, input.id.split('-')[0].replace(/([A-Z])/g, ' $1').trim());
           }
         }
-      </script>
+        if (input.name) {
+          const baseName = input.name.split('-')[0];
+          input.name = `${baseName}-${newIndex}`;
+        }
+      });
 
+      const errorDivs = newEntry.querySelectorAll(".error-message");
+      errorDivs.forEach(div => {
+        if (div.id) {
+          const baseId = div.id.split('-')[0];
+          div.id = `${baseId}-${newIndex}`;
+          div.textContent = "";
+        }
+      });
 
+      container.appendChild(newEntry);
+    }
+
+    function addExperience() {
+      const container = document.getElementById("experience-container");
+      const entries = container.querySelectorAll('.experience-entry');
+      const newIndex = entries.length;
+
+      const firstEntry = entries[0];
+      const newEntry = firstEntry.cloneNode(true);
+      newEntry.classList.add('experience-entry');
+      newEntry.id = `experience-${newIndex}`;
+
+      // Add remove button for dynamically added entries
+      const removeButton = document.createElement('div');
+      removeButton.className = 'button-wrapper';
+      removeButton.innerHTML = `<button class="remove-btn" onclick="this.parentElement.parentElement.remove()">Remove</button>`;
+      newEntry.prepend(removeButton);
+
+      const inputs = newEntry.querySelectorAll("input, select");
+      inputs.forEach(input => {
+        input.value = "";
+        if (input.id) {
+          const baseId = input.id.split('-')[0];
+          input.id = `${baseId}-${newIndex}`;
+          if (input.id.includes('startDate') || input.id.includes('endDate')) {
+            input.oninput = () => validateExperienceDates(`startDate-${newIndex}`, `endDate-${newIndex}`);
+          } else {
+            input.oninput = () => validateName(input.id, input.id.split('-')[0].replace(/([A-Z])/g, ' $1').trim());
+          }
+        }
+        if (input.name) {
+          const baseName = input.name.split('-')[0];
+          input.name = `${baseName}-${newIndex}`;
+        }
+      });
+
+      const errorDivs = newEntry.querySelectorAll(".error-message");
+      errorDivs.forEach(div => {
+        if (div.id) {
+          const baseId = div.id.split('-')[0];
+          div.id = `${baseId}-${newIndex}`;
+          div.textContent = "";
+        }
+      });
+
+      container.appendChild(newEntry);
+    }
+
+    function copyAddress() {
+      var copyCheck = document.getElementById("copyAddress");
+      if (copyCheck.checked) {
+        document.getElementById("cAddress").value = document.getElementById("pAddress").value;
+        document.getElementById("cStreet").value = document.getElementById("pStreet").value;
+        document.getElementById("cCity").value = document.getElementById("pCity").value;
+        document.getElementById("cState").value = document.getElementById("pState").value;
+        document.getElementById("cCountry").value = document.getElementById("pCountry").value;
+        document.getElementById("cPincode").value = document.getElementById("pPincode").value;
+      } else {
+        document.getElementById("cAddress").value = "";
+        document.getElementById("cStreet").value = "";
+        document.getElementById("cCity").value = "";
+        document.getElementById("cState").value = "";
+        document.getElementById("cCountry").value = "";
+        document.getElementById("cPincode").value = "";
+      }
+    }
+  </script>
 </body>
-
 </html>
