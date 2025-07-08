@@ -118,7 +118,6 @@
     .education-entry, .experience-entry {
       position: relative;
       padding: 20px;
-      /* border: 1px solid #e0e0e0; */
       border-radius: 8px;
       margin-bottom: 20px;
     }
@@ -250,8 +249,9 @@
         <div id="aadharError" class="error-message"></div>
       </div>
       <div class="col-md-6 mb-3">
-        <label for="aadharFile" class="form-label">Upload Aadhar</label>
-        <input type="file" class="form-control" id="aadharFile" required>
+        <label for="aadharFile" class="form-label">Upload Aadhar (PDF)</label>
+        <input type="file" class="form-control" id="aadharFile" accept=".pdf" oninput="validateFile('aadharFile')" required>
+        <div id="aadharFileError" class="error-message"></div>
       </div>
       <div class="col-md-6 mb-3">
         <label for="pan" class="form-label">PAN ID</label>
@@ -259,8 +259,9 @@
         <div id="panError" class="error-message"></div>
       </div>
       <div class="col-md-6 mb-3">
-        <label for="panFile" class="form-label">Upload PAN</label>
-        <input type="file" class="form-control" id="panFile" required>
+        <label for="panFile" class="form-label">Upload PAN (PDF)</label>
+        <input type="file" class="form-control" id="panFile" accept=".pdf" oninput="validateFile('panFile')" required>
+        <div id="panFileError" class="error-message"></div>
       </div>
       <div class="col-md-6 mb-3">
         <label for="gName" class="form-label">Guardian Name</label>
@@ -314,56 +315,70 @@
           <div id="aggregation-0Error" class="error-message"></div>
         </div>
         <div class="col-md-6 mb-3">
-          <label for="file-0" class="form-label">Upload Certificates</label>
-          <input type="file" class="form-control" name="file-0" id="file-0" required>
+          <label for="file-0" class="form-label">Upload Certificates (PDF)</label>
+          <input type="file" class="form-control" name="file-0" id="file-0" accept=".pdf" oninput="validateFile('file-0')" required>
+          <div id="file-0Error" class="error-message"></div>
         </div>
       </div>
     </div>
     <button class="add-btn" onclick="addEducation()">Add Education</button>
 
-    <h3 class="mt-4">Employment History</h3>
-    <b>(Kindly mention all your employments including current one)</b>
-    <hr class="section-divider">
-    <div id="experience-container">
-      <div class="experience-entry row mb-3">
-        <div class="col-md-6 mb-3">
-          <label for="companyname-0" class="form-label">Company Name</label>
-          <input type="text" class="form-control" name="companyname-0" id="companyname-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'companyname-0')" oninput="validateName('companyname-0','Company Name')" required>
-          <div id="companyname-0Error" class="error-message"></div>
-        </div>
-        <div class="col-md-6 mb-3">
-          <label for="role-0" class="form-label">Designation/Role</label>
-          <input type="text" class="form-control" name="role-0" id="role-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'role-0')" oninput="validateName('role-0','Role')" required>
-          <div id="role-0Error" class="error-message"></div>
-        </div>
-        <div class="col-md-6 mb-3">
-          <label for="projectName-0" class="form-label">Last Project Name</label>
-          <input type="text" class="form-control" name="projectName-0" id="projectName-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'projectName-0')" oninput="validateName('projectName-0','Project Name')" required>
-          <div id="projectName-0Error" class="error-message"></div>
-        </div>
-        <div class="col-md-6 mb-3">
-          <label for="startDate-0" class="form-label">Company Start Date</label>
-          <input type="date" class="form-control" name="startDate-0" id="startDate-0" oninput="validateExperienceDates('startDate-0','endDate-0')" required>
-          <div id="startDate-0Error" class="error-message"></div>
-        </div>
-        <div class="col-md-6 mb-3">
-          <label for="endDate-0" class="form-label">Company End Date</label>
-          <input type="date" class="form-control" id="endDate-0" name="endDate-0" oninput="validateExperienceDates('startDate-0','endDate-0')" required>
-          <div id="endDate-0Error" class="error-message"></div>
-        </div>
-        <div class="col-md-6 mb-3">
-          <label for="clientName-0" class="form-label">Key Client Name</label>
-          <input type="text" class="form-control" name="clientName-0" id="clientName-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'clientName-0')" oninput="validateName('clientName-0','Client Name')" required>
-          <div id="clientName-0Error" class="error-message"></div>
-        </div>
-        <div class="col-md-6 mb-3">
-          <label for="companyLocation-0" class="form-label">Location</label>
-          <input type="text" class="form-control" name="companyLocation-0" id="companyLocation-0" onkeypress="validateKey(event,'companyLocation-0')" oninput="validateName('companyLocation-0','Location')" required>
-          <div id="companyLocation-0Error" class="error-message"></div>
+    <div id="experience-section">
+      <h3 class="mt-4">Employment History</h3>
+      <b>(Kindly mention all your employments including current one if applicable)</b>
+      <hr class="section-divider">
+      <div class="row mb-3">
+        <div class="col-md-12 mb-3">
+          <label for="employmentStatus" class="form-label">Employment Status</label>
+          <select id="employmentStatus" name="employmentStatus" class="form-control" onchange="toggleExperienceFields()">
+            <option value="">--Select--</option>
+            <option value="Fresher">Fresher</option>
+            <option value="Experienced">Experienced</option>
+          </select>
+          <div id="employmentStatusError" class="error-message"></div>
         </div>
       </div>
+      <div id="experience-container">
+        <div class="experience-entry row mb-3">
+          <div class="col-md-6 mb-3">
+            <label for="companyname-0" class="form-label">Company Name</label>
+            <input type="text" class="form-control" name="companyname-0" id="companyname-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'companyname-0')" oninput="validateName('companyname-0','Company Name')" required>
+            <div id="companyname-0Error" class="error-message"></div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="role-0" class="form-label">Designation/Role</label>
+            <input type="text" class="form-control" name="role-0" id="role-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'role-0')" oninput="validateName('role-0','Role')" required>
+            <div id="role-0Error" class="error-message"></div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="projectName-0" class="form-label">Last Project Name</label>
+            <input type="text" class="form-control" name="projectName-0" id="projectName-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'projectName-0')" oninput="validateName('projectName-0','Project Name')" required>
+            <div id="projectName-0Error" class="error-message"></div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="startDate-0" class="form-label">Company Start Date</label>
+            <input type="date" class="form-control" name="startDate-0" id="startDate-0" oninput="validateExperienceDates('startDate-0','endDate-0')" required>
+            <div id="startDate-0Error" class="error-message"></div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="endDate-0" class="form-label">Company End Date</label>
+            <input type="date" class="form-control" id="endDate-0" name="endDate-0" oninput="validateExperienceDates('startDate-0','endDate-0')" required>
+            <div id="endDate-0Error" class="error-message"></div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="clientName-0" class="form-label">Key Client Name</label>
+            <input type="text" class="form-control" name="clientName-0" id="clientName-0" minlength="5" maxlength="30" onkeypress="validateKey(event,'clientName-0')" oninput="validateName('clientName-0','Client Name')" required>
+            <div id="clientName-0Error" class="error-message"></div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="companyLocation-0" class="form-label">Location</label>
+            <input type="text" class="form-control" name="companyLocation-0" id="companyLocation-0" onkeypress="validateKey(event,'companyLocation-0')" oninput="validateName('companyLocation-0','Location')" required>
+            <div id="companyLocation-0Error" class="error-message"></div>
+          </div>
+        </div>
+      </div>
+      <button class="add-btn" onclick="addExperience()">Add Experience</button>
     </div>
-    <button class="add-btn" onclick="addExperience()">Add Experience</button>
 
     <h3 class="mt-4">Address Details</h3>
     <hr class="section-divider">
@@ -467,6 +482,23 @@
   </div>
 
   <script>
+    function toggleExperienceFields() {
+      const employmentStatus = document.getElementById('employmentStatus').value;
+      const experienceContainer = document.getElementById('experience-container');
+      const addExperienceBtn = document.querySelector('#experience-section .add-btn');
+      const experienceInputs = experienceContainer.querySelectorAll('input');
+
+      if (employmentStatus === 'Fresher') {
+        experienceContainer.style.display = 'none';
+        addExperienceBtn.style.display = 'none';
+        experienceInputs.forEach(input => input.removeAttribute('required'));
+      } else {
+        experienceContainer.style.display = 'block';
+        addExperienceBtn.style.display = 'block';
+        experienceInputs.forEach(input => input.setAttribute('required', ''));
+      }
+    }
+
     function validateExperienceDates(startId, endId) {
       const startInput = document.getElementById(startId);
       const endInput = document.getElementById(endId);
@@ -508,97 +540,182 @@
       }
     }
 
-    async function submit() {
-      const fields = [
+   async function submit() {
+    const fields = [
         'name', 'email', 'phone', 'phoneAl', 'marital', 'doB', 'gender', 'bloodGroup',
         'aadhar', 'pan', 'gName', 'gPnum',
         'pAddress', 'pStreet', 'pCity', 'pState', 'pCountry', 'pPincode',
         'cAddress', 'cStreet', 'cCity', 'cState', 'cCountry', 'cPincode',
         'bname', 'bankAccount', 'ifsc', 'branchName'
-      ];
+    ];
 
-      let isComplete = true;
-      let formData = {};
+    let isComplete = true;
+    let formData = new FormData();
 
-      for (let field of fields) {
+    for (let field of fields) {
         const value = document.getElementById(field).value.trim();
         if (!value) {
-          isComplete = false;
-          alert("Please fill all required fields.");
-          document.getElementById(field).focus();
-          break;
+            isComplete = false;
+            alert(`Please fill ${field} field.`);
+            document.getElementById(field).focus();
+            break;
         }
-        formData[field] = value;
-      }
+        formData.append(field, value);
+    }
 
-      const educationEntries = [];
-      const eduSections = document.querySelectorAll('.education-entry');
-      eduSections.forEach((section, index) => {
+    const aadharFile = document.getElementById('aadharFile').files[0];
+    const panFile = document.getElementById('panFile').files[0];
+    if (!aadharFile || !panFile) {
+        isComplete = false;
+        alert("Please upload Aadhar and PAN files.");
+        return;
+    }
+    if (aadharFile.type !== 'application/pdf' || panFile.type !== 'application/pdf') {
+        isComplete = false;
+        alert("Aadhar and PAN files must be in PDF format.");
+        document.getElementById(aadharFile.type !== 'application/pdf' ? 'aadharFileError' : 'panFileError').textContent = "Please upload a PDF file.";
+        return;
+    }
+    formData.append('aadharFile', aadharFile);
+    formData.append('panFile', panFile);
+
+    const degrees = [];
+    const collegeNames = [];
+    const streams = [];
+    const yearsOfPassing = [];
+    const locations = [];
+    const aggregations = [];
+    const certificateFiles = [];
+    const eduSections = document.querySelectorAll('.education-entry');
+    for (let index = 0; index < eduSections.length; index++) {
         const degree = document.getElementById(`degree-${index}`)?.value.trim();
         const collegeName = document.getElementById(`collegeName-${index}`)?.value.trim();
         const stream = document.getElementById(`stream-${index}`)?.value.trim();
         const yearOfPassing = document.getElementById(`yearOfPassing-${index}`)?.value.trim();
         const location = document.getElementById(`location-${index}`)?.value.trim();
         const aggregation = document.getElementById(`aggregation-${index}`)?.value.trim();
-        const file = document.getElementById(`file-${index}`)?.value.trim();
+        const file = document.getElementById(`file-${index}`)?.files[0];
 
         if (!degree || !collegeName || !stream || !yearOfPassing || !location || !aggregation || !file) {
-          isComplete = false;
-          alert("Please complete all education fields.");
-          return;
+            isComplete = false;
+            alert("Please complete all education fields.");
+            return;
+        }
+        if (file.type !== 'application/pdf') {
+            isComplete = false;
+            alert(`Certificate file for education entry ${index + 1} must be in PDF format.`);
+            document.getElementById(`file-${index}Error`).textContent = "Please upload a PDF file.";
+            return;
+        }
+        if (!/^\d{4}$/.test(yearOfPassing)) {
+            isComplete = false;
+            alert(`Year of Passing for education entry ${index + 1} must be a valid 4-digit year.`);
+            return;
+        }
+        if (!/^\d+(\.\d{1,2})?$/.test(aggregation)) {
+            isComplete = false;
+            alert(`Aggregation for education entry ${index + 1} must be a valid number (e.g., 85.5).`);
+            return;
         }
 
-        educationEntries.push({ degree, collegeName, stream, yearOfPassing, location, aggregation, file });
-      });
-
-      formData.education = educationEntries;
-
-      const experienceEntries = [];
-      const expSections = document.querySelectorAll('.experience-entry');
-      expSections.forEach((section, index) => {
-        const companyName = document.getElementById(`companyname-${index}`)?.value.trim();
-        const jobTitle = document.getElementById(`role-${index}`)?.value.trim();
-        const projectName = document.getElementById(`projectName-${index}`)?.value.trim();
-        const startDate = document.getElementById(`startDate-${index}`)?.value.trim();
-        const endDate = document.getElementById(`endDate-${index}`)?.value.trim();
-        const clientName = document.getElementById(`clientName-${index}`)?.value.trim();
-        const location = document.getElementById(`companyLocation-${index}`)?.value.trim();
-
-        if (!companyName || !jobTitle || !projectName || !startDate || !endDate || !clientName || !location) {
-          isComplete = false;
-          alert("Please complete all experience fields.");
-          return;
-        }
-
-        experienceEntries.push({
-          companyName, jobTitle, projectName, startDate, endDate, clientName, location
-        });
-      });
-
-      formData.experience = experienceEntries;
-
-      if (isComplete) {
-        try {
-          const response = await fetch("http://localhost:8080/api/onboarding/submit", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(formData)
-          });
-
-          if (response.ok) {
-            const result = await response.json();
-            alert("Form submitted successfully! ID: " + result.id);
-          } else {
-            alert("Error submitting form. Please try again.");
-          }
-        } catch (error) {
-          console.error("Error:", error);
-          alert("Something went wrong.");
-        }
-      }
+        degrees.push(degree);
+        collegeNames.push(collegeName);
+        streams.push(stream);
+        yearsOfPassing.push(yearOfPassing);
+        locations.push(location);
+        aggregations.push(aggregation);
+        certificateFiles.push(file);
     }
+    degrees.forEach(degree => formData.append('degree[]', degree));
+    collegeNames.forEach(collegeName => formData.append('collegeName[]', collegeName));
+    streams.forEach(stream => formData.append('stream[]', stream));
+    yearsOfPassing.forEach(year => formData.append('yearOfPassing[]', year));
+    locations.forEach(location => formData.append('location[]', location));
+    aggregations.forEach(aggregation => formData.append('aggregation[]', aggregation));
+    certificateFiles.forEach(file => formData.append('certificate-0', file));
+
+    const employmentStatus = document.getElementById('employmentStatus').value.trim();
+    if (!employmentStatus) {
+        isComplete = false;
+        alert("Please select Employment Status.");
+        document.getElementById('employmentStatus').focus();
+        return;
+    }
+    formData.append('employmentStatus', employmentStatus);
+
+    const companyNames = [];
+    const roles = [];
+    const projectNames = [];
+    const startDates = [];
+    const endDates = [];
+    const clientNames = [];
+    const companyLocations = [];
+    if (employmentStatus === 'Experienced') {
+        const expSections = document.querySelectorAll('.experience-entry');
+        for (let index = 0; index < expSections.length; index++) {
+            const companyName = document.getElementById(`companyname-${index}`)?.value.trim();
+            const role = document.getElementById(`role-${index}`)?.value.trim();
+            const projectName = document.getElementById(`projectName-${index}`)?.value.trim();
+            const startDate = document.getElementById(`startDate-${index}`)?.value.trim();
+            const endDate = document.getElementById(`endDate-${index}`)?.value.trim();
+            const clientName = document.getElementById(`clientName-${index}`)?.value.trim();
+            const location = document.getElementById(`companyLocation-${index}`)?.value.trim();
+
+            if (!companyName || !role || !projectName || !startDate || !endDate || !clientName || !location) {
+                isComplete = false;
+                alert("Please complete all experience fields.");
+                return;
+            }
+            if (!/^\d{4}-\d{2}-\d{2}$/.test(startDate) || !/^\d{4}-\d{2}-\d{2}$/.test(endDate)) {
+                isComplete = false;
+                alert(`Start Date and End Date for experience entry ${index + 1} must be in YYYY-MM-DD format.`);
+                return;
+            }
+
+            companyNames.push(companyName);
+            roles.push(role);
+            projectNames.push(projectName);
+            startDates.push(startDate);
+            endDates.push(endDate);
+            clientNames.push(clientName);
+            companyLocations.push(location);
+        }
+    }
+    companyNames.forEach(companyName => formData.append('companyName[]', companyName));
+    roles.forEach(role => formData.append('jobTitle[]', role));
+    projectNames.forEach(projectName => formData.append('projectName[]', projectName));
+    startDates.forEach(startDate => formData.append('startDate[]', startDate));
+    endDates.forEach(endDate => formData.append('endDate[]', endDate));
+    clientNames.forEach(clientName => formData.append('clientName[]', clientName));
+    companyLocations.forEach(location => formData.append('companyLocation[]', location));
+
+    // Log FormData for debugging
+    console.log("FormData contents:");
+    for (let pair of formData.entries()) {
+        console.log(`${pair[0]}: ${pair[1]}`);
+    }
+
+    if (isComplete) {
+        try {
+            const response = await fetch("http://localhost:8080/api/onboarding/submit", {
+                method: "POST",
+                body: formData
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                alert("Form submitted successfully! ID: " + result.id);
+            } else {
+                const error = await response.text();
+                console.error("Server error:", error);
+                alert("Error submitting form: " + error);
+            }
+        } catch (error) {
+            console.error("Fetch error:", error);
+            alert("Something went wrong: " + error.message);
+        }
+    }
+}
 
     function validateName(id, fieldname) {
       var name = document.getElementById(id).value;
@@ -849,6 +966,20 @@
       return true;
     }
 
+    function validateFile(id) {
+      const input = document.getElementById(id);
+      const error = document.getElementById(id + 'Error');
+      const file = input.files[0];
+      if (file && file.type !== 'application/pdf') {
+        error.textContent = "Please upload a PDF file.";
+        input.value = '';
+        return false;
+      } else {
+        error.textContent = "";
+      }
+      return true;
+    }
+
     function addEducation() {
       const container = document.getElementById("education-container");
       const entries = container.querySelectorAll('.education-entry');
@@ -859,7 +990,6 @@
       newEntry.classList.add('education-entry');
       newEntry.id = `education-${newIndex}`;
 
-      // Add remove button for dynamically added entries
       const removeButton = document.createElement('div');
       removeButton.className = 'button-wrapper';
       removeButton.innerHTML = `<button class="remove-btn" onclick="this.parentElement.parentElement.remove()">Remove</button>`;
@@ -875,6 +1005,8 @@
             input.oninput = () => validateYearOfPassing(input.id);
           } else if (input.id.includes('aggregation')) {
             input.oninput = () => validateAggregation(input.id);
+          } else if (input.id.includes('file')) {
+            input.oninput = () => validateFile(input.id);
           } else {
             input.oninput = () => validateName(input.id, input.id.split('-')[0].replace(/([A-Z])/g, ' $1').trim());
           }
@@ -907,7 +1039,6 @@
       newEntry.classList.add('experience-entry');
       newEntry.id = `experience-${newIndex}`;
 
-      // Add remove button for dynamically added entries
       const removeButton = document.createElement('div');
       removeButton.className = 'button-wrapper';
       removeButton.innerHTML = `<button class="remove-btn" onclick="this.parentElement.parentElement.remove()">Remove</button>`;

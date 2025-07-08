@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +9,6 @@
     body {
       background-color: #f8f9fa;
     }
-
     .header-banner {
       background-color: #2c3e50;
       color: white;
@@ -20,7 +18,6 @@
       font-weight: bold;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     }
-
     .dashboard-card {
       max-width: 1000px;
       margin: auto;
@@ -30,19 +27,53 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
-
     .cards {
       display: flex;
       justify-content: space-around;
       margin: 20px auto;
       padding: 30px;
       max-width: 1000px;
+      flex-wrap: wrap;
+      gap: 20px;
     }
-
+    .card {
+      width: 200px;
+      background: linear-gradient(135deg, #ffffff, #f1f5f9);
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
     .card h5 {
       margin-bottom: 10px;
+      font-size: 1.25rem;
+      color: #2c3e50;
+      font-weight: 600;
     }
-
+    .card p {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #1a73e8;
+      margin: 0;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, #1a73e8, #34c759);
+      border-radius: 15px 15px 0 0;
+    }
     .filter-section {
       max-width: 1000px;
       margin: 20px auto;
@@ -51,18 +82,108 @@
       align-items: center;
       flex-wrap: wrap;
     }
-
     .filter-section input,
     .filter-section select {
       padding: 8px 12px;
       border-radius: 10px;
       border: 1px solid #000;
       margin-top: 10px;
-      
+    }
+    .document-buttons {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .document-buttons button {
+      margin-right: 10px;
+      border-radius: 8px;
+      padding: 6px 12px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .document-buttons button.btn-info {
+    color: white;
+      background-color: #17a2b8;
+      border-color: #17a2b8;
+    }
+    .document-buttons button.btn-info:hover {
+      color: white;
+      background-color: #138496;
+      transform: scale(1.05);
+    }
+    .document-buttons button.btn-success {
+      background-color: #28a745;
+      border-color: #28a745;
+    }
+    .document-buttons button.btn-success:hover {
+      background-color: #218838;
+      transform: scale(1.05);
+    }
+    .pdf-viewer {
+      width: 100%;
+      height: 500px;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      display: none;
+      background-color: #fff;
+    }
+    .pdf-viewer.active {
+      display: block;
+    }
+    .modal-content {
+      border-radius: 15px;
+      border: none;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
+      overflow: hidden;
+    }
+    .modal-header {
+      background: linear-gradient(to right, #2c3e50, #4a6278);
+      color: white;
+      border-bottom: none;
+      padding: 20px;
+    }
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .modal-body {
+      padding: 30px;
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.6;
+    }
+    .modal-body strong {
+      color: #2c3e50;
+      font-weight: 600;
+      display: inline-block;
+      min-width: 150px;
+    }
+    .modal-body hr {
+      border-top: 1px solid #e2e8f0;
+      margin: 20px 0;
+    }
+    .modal-body ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .modal-body ul li {
+      background: #f1f5f9;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+    .modal-body ul li:hover {
+      background: #e2e8f0;
+    }
+    .modal-body .document-buttons strong {
+      min-width: auto;
+      margin-right: 10px;
     }
   </style>
 </head>
-
 <body>
   <div class="container mt-4">
     <h2 class="header-banner">HR Onboarding Dashboard</h2>
@@ -78,26 +199,25 @@
           <option value="Completed">Completed</option>
           <option value="InCompleted">InCompleted</option>
         </select>
-        
-        <button class="btn btn-danger " onclick="clearAll()">Clear All Records</button>
-       </div>
+        <button class="btn btn-danger" onclick="clearAll()">Clear All Records</button>
+      </div>
     </div>
 
     <!-- Status Cards -->
     <div class="cards mt-4">
-      <div class="card text-center" style="width: 200px;">
+      <div class="card text-center">
         <h5 class="m-2">Total Employee</h5>
         <p id="totalCount">0</p>
       </div>
-      <div class="card text-center " style="width: 200px;">
+      <div class="card text-center">
         <h5 class="mt-2">Incomplete</h5>
         <p id="incompleteCount">0</p>
       </div>
-      <div class="card text-center" style="width: 200px;">
+      <div class="card text-center">
         <h5 class="mt-2">Completed</h5>
         <p id="completedCount">0</p>
       </div>
-      <div class="card text-center" style="width: 200px;">
+      <div class="card text-center">
         <h5 class="mt-2">Pending</h5>
         <p id="pendingCount">0</p>
       </div>
@@ -119,10 +239,6 @@
           <tbody id="employeeTableBody"></tbody>
         </table>
       </div>
-
-      <!-- Clear Button -->
-      <div class="text-end">
-      </div>
     </div>
   </div>
 
@@ -134,196 +250,385 @@
           <h5 class="modal-title">Employee Details</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body" id="modalBodyContent"></div>
+        <div class="modal-body" id="modalBodyContent">
+          <!-- PDF Viewer will be appended here dynamically -->
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Scripts -->
   <script>
-  const API_BASE_URL = "http://localhost:8080/api/onboarding";
+    const API_BASE_URL = "http://localhost:8080/api";
 
-  let employeeData = [];
+    let employeeData = [];
 
-  // Fetch all employees from API
-  async function fetchEmployees() {
-    try {
-      const response = await fetch(`${API_BASE_URL}/all`);
-      employeeData = await response.json();
-      employeeData.forEach(emp => {
-        if (!emp.status) emp.status = "Pending";
-      });
-      renderTable();
-      updateCounts();
-    } catch (error) {
-      console.error("Error fetching employee data:", error);
-    }
-  }
-
-  // Update counts
-  function updateCounts() {
-    document.getElementById('totalCount').textContent = employeeData.length;
-    document.getElementById('pendingCount').textContent = employeeData.filter(e => e.status === "Pending").length;
-    document.getElementById('completedCount').textContent = employeeData.filter(e => e.status === "Completed").length;
-    document.getElementById('incompleteCount').textContent = employeeData.filter(e => e.status === "InCompleted").length;
-  }
-
-  // Render table based on filter
-  function renderTable(filter = "", statusFilter = "") {
-    const tbody = document.getElementById("employeeTableBody");
-    tbody.innerHTML = "";
-
-    const filtered = employeeData.filter(emp =>
-      emp.name.toLowerCase().includes(filter.toLowerCase()) &&
-      (statusFilter === "" || emp.status === statusFilter)
-    );
-
-    filtered.forEach((emp, index) => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${emp.name}</td>
-        <td>${emp.email}</td>
-        <td>${emp.phone}</td>
-        <td>
-          <select class="form-select status-select" data-id="${emp.id}" ${emp.status !== 'Pending' ? 'disabled' : ''}>
-            <option ${emp.status === 'Pending' ? 'selected' : ''}>Pending</option>
-            <option ${emp.status === 'Completed' ? 'selected' : ''}>Completed</option>
-            <option ${emp.status === 'InCompleted' ? 'selected' : ''}>InCompleted</option>
-          </select>
-        </td>
-        <td><button class="btn btn-primary btn-sm" onclick="viewDetails(${index})">View Details</button></td>
-      `;
-      tbody.appendChild(row);
-    });
-
-    document.querySelectorAll('.status-select').forEach(select => {
-      select.addEventListener('change', async function () {
-        const id = this.getAttribute("data-id");
-        const newStatus = this.value;
-        await updateStatus(id, newStatus);
-      });
-    });
-
-    updateCounts();
-  }
-
-  // Update employee status via API
-  async function updateStatus(id, newStatus) {
-    try {
-      const employee = employeeData.find(e => e.id == id);
-      if (!employee) return;
-
-      employee.status = newStatus;
-
-      const response = await fetch(`${API_BASE_URL}/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(employee)
-      });
-
-      if (response.ok) {
-        alert("Status updated successfully!");
-        fetchEmployees();
-      } else {
-        alert("Failed to update status.");
-      }
-    } catch (err) {
-      console.error("Error updating status:", err);
-    }
-  }
-
-  // View employee details in modal
-  function viewDetails(index) {
-    const emp = employeeData[index];
-    let html = `<strong>Personal Details:</strong><br>
-      <strong>Name:</strong> ${emp.name}<br>
-      <strong>Email:</strong> ${emp.email}<br>
-      <strong>Phone:</strong> ${emp.phone}<br>
-      <strong>Date Of Birth:</strong> ${emp.doB}<br>
-      <strong>Marital Status:</strong> ${emp.marital}<br>
-      <strong>Aadhar Number:</strong> ${emp.aadhar}<br>
-      <strong>PAN Number:</strong> ${emp.pan}<br>
-      <strong>Alternate Phone:</strong> ${emp.phoneAl}<br>
-      <strong>Gender:</strong> ${emp.gender}<br>
-      <strong>Blood Group:</strong> ${emp.bloodGroup}<br>
-      <strong>Guardian Name:</strong> ${emp.gName}<br>
-      <strong>Guardian Phone:</strong> ${emp.gPnum}<br><hr>`;
-
-    html += `<strong>Education:</strong><ul>`;
-    emp.education?.forEach(e => {
-      html += `<li>${e.degree}, ${e.collegeName}, ${e.stream}, ${e.yearOfPassing}, ${e.location}, ${e.aggregation}</li>`;
-    });
-    html += `</ul><hr>`;
-
-    html += `<strong>Experience:</strong><ul>`;
-    emp.experience?.forEach(e => {
-      html += `<li>${e.companyName}, ${e.role}, ${e.years}, ${e.location}</li>`;
-    });
-    html += `</ul><hr>`;
-
-    html += `<strong>Bank Details:</strong><br>
-      <strong>Name:</strong> ${emp.bname}<br>
-      <strong>Account:</strong> ${emp.bankAccount}<br>
-      <strong>IFSC:</strong> ${emp.ifsc}<br>
-      <strong>Branch:</strong> ${emp.branchName}<br><hr>`;
-
-    html += `<strong>Current Address:</strong><br>
-      <strong>Address:</strong> ${emp.cAddress}<br>
-      <strong>Street:</strong> ${emp.cStreet}<br>
-      <strong>City:</strong> ${emp.cCity}<br>
-      <strong>State:</strong> ${emp.cState}<br>
-      <strong>Country:</strong> ${emp.cCountry}<br><hr>`;
-
-    html += `<strong>Permanent Address:</strong><br>
-      <strong>Address:</strong> ${emp.pAddress}<br>
-      <strong>Street:</strong> ${emp.pStreet}<br>
-      <strong>City:</strong> ${emp.pCity}<br>
-      <strong>State:</strong> ${emp.pState}<br>
-      <strong>Country:</strong> ${emp.pCountry}<br>`;
-
-    document.getElementById("modalBodyContent").innerHTML = html;
-    new bootstrap.Modal(document.getElementById('detailsModal')).show();
-  }
-
-  // Clear All (optional feature)
- function clearAll() {
-  if (confirm("Are you sure you want to delete all onboarding records?")) {
-    fetch("http://localhost:8080/api/onboarding/clear", {
-      method: "DELETE"
-    })
-    .then(res => {
-      if (res.ok) {
-        alert("All records deleted.");
+    // Fetch all employees from API
+    async function fetchEmployees() {
+      try {
+        const response = await fetch(`${API_BASE_URL}/employees`);
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
+        }
+        employeeData = await response.json();
+        employeeData.forEach(emp => {
+          if (!emp.status) emp.status = "Pending";
+        });
+        console.log('Fetched employee data:', employeeData);
         renderTable();
-      } else {
-        alert("Failed to delete records.");
+        updateCounts();
+      } catch (error) {
+        console.error("Error fetching employee data:", error);
+        alert(`Failed to load employee data: ${error.message}`);
       }
-    })
-    .catch(err => {
-      console.error("Error:", err);
-      alert("Error deleting records.");
+    }
+
+    // Update counts
+    function updateCounts() {
+      const total = employeeData.length;
+      const pending = employeeData.filter(e => e.status && e.status.toLowerCase() === "pending").length;
+      const completed = employeeData.filter(e => e.status && e.status.toLowerCase() === "completed").length;
+      const incomplete = employeeData.filter(e => e.status && e.status.toLowerCase() === "incompleted").length;
+
+      document.getElementById('totalCount').textContent = total;
+      document.getElementById('pendingCount').textContent = pending;
+      document.getElementById('completedCount').textContent = completed;
+      document.getElementById('incompleteCount').textContent = incomplete;
+
+      console.log(`Counts updated: Total=${total}, Pending=${pending}, Completed=${completed}, InCompleted=${incomplete}`);
+    }
+
+    // Render table based on filter
+    function renderTable(filter = "", statusFilter = "") {
+      const tbody = document.getElementById("employeeTableBody");
+      tbody.innerHTML = "";
+
+      const filtered = employeeData.filter(emp =>
+        emp.name.toLowerCase().includes(filter.toLowerCase()) &&
+        (statusFilter === "" || (emp.status && emp.status.toLowerCase() === statusFilter.toLowerCase()))
+      );
+
+      filtered.forEach((emp, index) => {
+        const isStatusLocked = emp.status && (emp.status.toLowerCase() === "completed" || emp.status.toLowerCase() === "incompleted");
+        const pendingSelected = emp.status && emp.status.toLowerCase() === 'pending' ? 'selected' : '';
+        const completedSelected = emp.status && emp.status.toLowerCase() === 'completed' ? 'selected' : '';
+        const incompleteSelected = emp.status && emp.status.toLowerCase() === 'incompleted' ? 'selected' : '';
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${emp.name}</td>
+          <td>${emp.email}</td>
+          <td>${emp.phone}</td>
+          <td>
+            <select class="form-select status-select" data-id="${emp.id}" ${isStatusLocked ? 'disabled' : ''}>
+              <option value="Pending" ${pendingSelected}>Pending</option>
+              <option value="Completed" ${completedSelected}>Completed</option>
+              <option value="InCompleted" ${incompleteSelected}>InCompleted</option>
+            </select>
+          </td>
+          <td><button class="btn btn-primary btn-sm" onclick="viewDetails(${index})">View Details</button></td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      document.querySelectorAll('.status-select').forEach(select => {
+        select.addEventListener('change', async function () {
+          if (this.disabled) return;
+          const id = this.getAttribute("data-id");
+          const newStatus = this.value;
+          await updateStatus(id, newStatus);
+        });
+      });
+
+      updateCounts();
+    }
+
+    // Update employee status via API
+    async function updateStatus(id, newStatus) {
+      try {
+        console.log(`Updating status for employee ID: ${id} to ${newStatus}`);
+        const response = await fetch(`${API_BASE_URL}/employees/${id}/status`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ status: newStatus })
+        });
+
+        if (response.ok) {
+          console.log(`Status updated successfully for ID: ${id} to ${newStatus}`);
+          alert(`Status updated to ${newStatus}!`);
+          await fetchEmployees(); // Refresh data from backend
+        } else {
+          const errorText = await response.text();
+          console.error(`Failed to update status for ID ${id}: ${response.status} ${errorText}`);
+          alert(`Failed to update status: ${errorText}`);
+          await fetchEmployees(); // Revert to backend state
+        }
+      } catch (err) {
+        console.error(`Error updating status for ID ${id}:`, err);
+        alert(`Error updating status: ${err.message}`);
+        await fetchEmployees(); // Revert to backend state
+      }
+    }
+
+    // View employee details in modal
+    function viewDetails(index) {
+      const emp = employeeData[index];
+      console.log('Employee ID:', emp.id);
+      console.log('Educations:', emp.educations);
+      let html = `<strong>Personal Details:</strong><br>
+        <strong>Name:</strong> ${emp.name}<br>
+        <strong>Email:</strong> ${emp.email}<br>
+        <strong>Phone:</strong> ${emp.phone}<br>
+        <strong>Date Of Birth:</strong> ${emp.dateOfBirth}<br>
+        <strong>Marital Status:</strong> ${emp.maritalStatus}<br>
+        <strong>Aadhar Number:</strong> ${emp.aadhar}<br>
+        <strong>PAN Number:</strong> ${emp.pan}<br>
+        <strong>Alternate Phone:</strong> ${emp.alternatePhone}<br>
+        <strong>Gender:</strong> ${emp.gender}<br>
+        <strong>Blood Group:</strong> ${emp.bloodGroup}<br>
+        <strong>Guardian Name:</strong> ${emp.guardianName}<br>
+        <strong>Guardian Phone:</strong> ${emp.guardianPhone}<br>
+        <div class="document-buttons">
+          <strong>Aadhar Document:</strong>
+          <button class="btn btn-info btn-sm" onclick="viewDocument(${emp.id}, 'aadhar')">View</button>
+          <button class="btn btn-success btn-sm" onclick="downloadDocument(${emp.id}, 'aadhar')">Download</button>
+        </div>
+        <div class="document-buttons">
+          <strong>PAN Document:</strong>
+          <button class="btn btn-info btn-sm" onclick="viewDocument(${emp.id}, 'pan')">View</button>
+          <button class="btn btn-success btn-sm" onclick="downloadDocument(${emp.id}, 'pan')">Download</button>
+        </div>
+        <hr>`;
+
+      html += `<strong>Education:</strong><ul>`;
+      if (emp.educations && emp.educations.length > 0) {
+        emp.educations.forEach((e, i) => {
+          console.log(`Education ${i} ID:`, e.id);
+          html += `<li>${e.degree}, ${e.collegeName}, ${e.stream}, ${e.yearOfPassing}, ${e.location}, ${e.aggregation}
+            <div class="document-buttons">
+              <button class="btn btn-info btn-sm" onclick="viewDocument(${emp.id}, 'certificate', ${e.id})">View Certificate</button>
+              <button class="btn btn-success btn-sm" onclick="downloadDocument(${emp.id}, 'certificate', ${e.id})">Download Certificate</button>
+            </div>
+          </li>`;
+        });
+      } else {
+        html += `<li>No education records available.</li>`;
+      }
+      html += `</ul><hr>`;
+
+      html += `<strong>Experience:</strong><ul>`;
+      if (emp.employmentHistory && emp.employmentHistory.length > 0) {
+        emp.employmentHistory.forEach(e => {
+          html += `<li>${e.companyName}, ${e.role}, ${e.projectName}, ${e.startDate} to ${e.endDate}, ${e.clientName}, ${e.location}</li>`;
+        });
+      } else {
+        html += `<li>No experience records available.</li>`;
+      }
+      html += `</ul><hr>`;
+
+      html += `<strong>Bank Details:</strong><br>
+        <strong>Name:</strong> ${emp.bankName}<br>
+        <strong>Account:</strong> ${emp.bankAccount}<br>
+        <strong>IFSC:</strong> ${emp.ifsc}<br>
+        <strong>Branch:</strong> ${emp.branchName}<br><hr>`;
+
+      html += `<strong>Current Address:</strong><br>
+        <strong>Address:</strong> ${emp.currentAddress}<br>
+        <strong>Street:</strong> ${emp.currentStreet}<br>
+        <strong>City:</strong> ${emp.currentCity}<br>
+        <strong>State:</strong> ${emp.currentState}<br>
+        <strong>Country:</strong> ${emp.currentCountry}<br>
+        <strong>Pincode:</strong> ${emp.currentPincode}<br><hr>`;
+
+      html += `<strong>Permanent Address:</strong><br>
+        <strong>Address:</strong> ${emp.permanentAddress}<br>
+        <strong>Street:</strong> ${emp.permanentStreet}<br>
+        <strong>City:</strong> ${emp.permanentCity}<br>
+        <strong>State:</strong> ${emp.permanentState}<br>
+        <strong>Country:</strong> ${emp.permanentCountry}<br>
+        <strong>Pincode:</strong> ${emp.permanentPincode}<br>`;
+
+      // Add PDF viewer container
+      html += `<div id="pdfViewer" class="pdf-viewer"></div>`;
+
+      document.getElementById("modalBodyContent").innerHTML = html;
+      new bootstrap.Modal(document.getElementById('detailsModal')).show();
+    }
+
+    // View document in a new tab or modal
+    async function viewDocument(employeeId, type, educationId = null) {
+      let url = `${API_BASE_URL}/employees/${employeeId}/${type}?action=view`;
+      if (type === 'certificate') {
+        if (!educationId) {
+          console.error('Education ID is missing for certificate');
+          alert('Error: Education ID is missing for certificate');
+          return;
+        }
+        url = `${API_BASE_URL}/employees/${employeeId}/certificate/${educationId}?action=view`;
+      }
+      console.log('Attempting to access document URL:', url);
+
+      try {
+        // Set a timeout for the fetch request
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5-second timeout
+
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: { 'Accept': 'application/pdf' },
+          signal: controller.signal
+        });
+
+        clearTimeout(timeoutId); // Clear timeout if request succeeds
+
+        if (!response.ok) {
+          const errorText = await response.text().catch(() => 'No response body');
+          console.error(`Failed to access ${type} document: ${response.status} - ${errorText}`);
+          alert(`Failed to access ${type} document: ${response.status} ${response.statusText}. ${errorText}`);
+          return;
+        }
+
+        const contentType = response.headers.get('Content-Type') || '';
+        console.log(`Content-Type for ${type} document: ${contentType}`);
+        if (!contentType.includes('application/pdf')) {
+          console.error(`Invalid Content-Type for ${type} document: ${contentType}`);
+          alert(`Invalid document type for ${type}: ${contentType}`);
+          return;
+        }
+
+        // Fetch the PDF as a blob
+        const blob = await response.blob();
+        console.log(`Received ${type} blob, size: ${blob.size} bytes, type: ${blob.type}`);
+        if (blob.type !== 'application/pdf') {
+          console.error(`Invalid blob type for ${type}: ${blob.type}`);
+          alert(`Invalid document type for ${type}: ${blob.type}`);
+          return;
+        }
+
+        // Create a temporary URL for the blob
+        const blobUrl = URL.createObjectURL(blob);
+
+        // Try opening in a new tab
+        const newTab = window.open(blobUrl, '_blank');
+        if (newTab) {
+          console.log(`Opened ${type} document in new tab`);
+          // Revoke the blob URL after a short delay to allow the tab to load
+          setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+        } else {
+          console.warn('New tab blocked, falling back to modal viewer');
+          // Fallback to displaying in modal
+          const pdfViewer = document.getElementById('pdfViewer');
+          pdfViewer.innerHTML = `<iframe src="${blobUrl}" width="100%" height="100%" style="border: none;"></iframe>`;
+          pdfViewer.classList.add('active');
+          // Ensure blob URL is revoked when modal is closed
+          const modal = document.getElementById('detailsModal');
+          modal.addEventListener('hidden.bs.modal', () => {
+            pdfViewer.innerHTML = '';
+            pdfViewer.classList.remove('active');
+            URL.revokeObjectURL(blobUrl);
+          }, { once: true });
+        }
+      } catch (err) {
+        console.error(`Error accessing ${type} document:`, err);
+        let errorMessage = `Error accessing ${type} document: ${err.message}`;
+        if (err.name === 'AbortError') {
+          errorMessage = `Error accessing ${type} document: Request timed out after 5 seconds`;
+        }
+        alert(errorMessage);
+      }
+    }
+
+    // Download document
+    async function downloadDocument(employeeId, type, educationId = null) {
+      let url = `${API_BASE_URL}/employees/${employeeId}/${type}?action=download`;
+      if (type === 'certificate') {
+        if (!educationId) {
+          console.error('Education ID is missing for certificate');
+          alert('Error: Education ID is missing for certificate');
+          return;
+        }
+        url = `${API_BASE_URL}/employees/${employeeId}/certificate/${educationId}?action=download`;
+      }
+      console.log('Downloading URL:', url);
+      try {
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/pdf'
+          }
+        });
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error(`Failed to download ${type} document: ${response.status} ${errorText}`);
+          alert(`Failed to download ${type} document: ${errorText}`);
+          return;
+        }
+        const blob = await response.blob();
+        console.log(`Received ${type} document, size: ${blob.size} bytes, type: ${blob.type}`);
+        if (blob.type !== 'application/pdf') {
+          console.error(`Invalid content type for ${type}: ${blob.type}`);
+          alert(`Invalid content type for ${type} document: ${blob.type}`);
+          return;
+        }
+        if (blob.size < 1000) {
+          console.warn(`Document size too small for ${type}: ${blob.size} bytes`);
+          alert(`Document size too small for ${type}: ${blob.size} bytes`);
+          return;
+        }
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = type === 'certificate' ? `certificate_${employeeId}_${educationId}.pdf` : `${type}_${employeeId}.pdf`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(link.href);
+        console.log(`Downloaded ${type} document`);
+      } catch (err) {
+        console.error(`Error downloading ${type} document:`, err);
+        alert(`Error downloading ${type} document: ${err.message}`);
+      }
+    }
+
+    // Clear all records
+    async function clearAll() {
+      if (confirm("Are you sure you want to delete all onboarding records?")) {
+        try {
+          const response = await fetch(`${API_BASE_URL}/employees/clear`, {
+            method: "DELETE"
+          });
+          if (response.ok) {
+            console.log("All records deleted successfully");
+            alert("All records deleted.");
+            employeeData = [];
+            renderTable();
+            updateCounts();
+          } else {
+            const errorText = await response.text();
+            console.error("Failed to clear records:", errorText);
+            alert("Failed to clear records: " + errorText);
+          }
+        } catch (err) {
+          console.error("Error clearing records:", err);
+          alert("Error clearing records: " + err.message);
+        }
+      }
+    }
+
+    // Search & filter handlers
+    document.getElementById('searchInput').addEventListener('input', e => {
+      renderTable(e.target.value, document.getElementById('statusFilter').value);
     });
-  }
-}
 
+    document.getElementById('statusFilter').addEventListener('change', e => {
+      renderTable(document.getElementById('searchInput').value, e.target.value);
+    });
 
-
-  // Search & filter handlers
-  document.getElementById('searchInput').addEventListener('input', e => {
-    renderTable(e.target.value, document.getElementById('statusFilter').value);
-  });
-
-  document.getElementById('statusFilter').addEventListener('change', e => {
-    renderTable(document.getElementById('searchInput').value, e.target.value);
-  });
-
-  // Initial load
-  fetchEmployees();
-</script>
-
+    // Initial load
+    fetchEmployees();
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
